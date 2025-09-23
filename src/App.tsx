@@ -7,7 +7,9 @@ import { HelmetProvider } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import QAFlow from "./pages/QAFlow";
+import QAIndex from "./pages/QAIndex";
+import QACluster from "./pages/QACluster";
+import QADetail from "./pages/QADetail";
 import Enroll from "./pages/Enroll";
 import FAQ from "./pages/FAQ";
 import Workshop from "./pages/Workshop";
@@ -29,7 +31,9 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/qa" element={<QAFlow />} />
+              <Route path="/qa" element={<QAIndex />} />
+              <Route path="/qa/cluster/:clusterNumber" element={<QACluster />} />
+              <Route path="/qa/cluster/:clusterNumber/:slug" element={<QADetail />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/enroll" element={<Enroll />} />
               <Route path="/workshop" element={<Workshop />} />
