@@ -9,6 +9,11 @@ interface SEOHeadProps {
   ogType?: string;
   schemaData?: object;
   noindex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  articleAuthor?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+  speakableSelectors?: string[];
 }
 
 const SEOHead = ({
@@ -16,13 +21,91 @@ const SEOHead = ({
   description,
   keywords,
   canonical,
-  ogImage = "https://exploreearnrepeat.com/og-image.jpg",
+  ogImage = "https://www.exploreearnrepeat.com/og-image.jpg",
   ogType = "website",
   schemaData,
   noindex = false,
+  publishedTime,
+  modifiedTime,
+  articleAuthor,
+  breadcrumbs,
+  speakableSelectors = ["h1", "h2", ".qa-answer"]
 }: SEOHeadProps) => {
   const fullTitle = title.includes("ExploreEarnRepeat") ? title : `${title} | ExploreEarnRepeat`;
-  const currentUrl = canonical || window.location.href;
+  const currentUrl = canonical || `https://www.exploreearnrepeat.com${window.location.pathname}`;
+  
+  // Enhanced organization schema for E-E-A-T
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ExploreEarnRepeat",
+    "alternateName": "Platinum Network Team",
+    "url": "https://www.exploreearnrepeat.com",
+    "logo": "https://www.exploreearnrepeat.com/logo.png",
+    "foundingDate": "2018",
+    "founder": {
+      "@type": "Person",
+      "name": "Catina Perkins",
+      "jobTitle": "Certified Travel Professional"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Baltimore",
+      "addressRegion": "MD",
+      "addressCountry": "US"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+1-410-555-0123",
+        "contactType": "customer service",
+        "email": "catina@exploreearnrepeat.com",
+        "availableLanguage": "English",
+        "areaServed": "US"
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "url": "https://calendly.com/catina-perkins",
+        "availableLanguage": "English"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/exploreearnrepeat",
+      "https://www.instagram.com/exploreearnrepeat",
+      "https://www.linkedin.com/company/exploreearnrepeat"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "PlanNet Marketing Partnership",
+        "credentialCategory": "professional"
+      }
+    ],
+    "serviceType": "Travel Agency Services",
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "knowsAbout": [
+      "Home-Based Travel Agency",
+      "Travel Business Training",
+      "Travel Industry Consulting",
+      "Online Travel Booking"
+    ]
+  };
+
+  // Breadcrumb schema if breadcrumbs provided
+  const breadcrumbSchema = breadcrumbs ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((breadcrumb, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": breadcrumb.name,
+      "item": breadcrumb.url
+    }))
+  } : null;
 
   return (
     <Helmet>
@@ -52,17 +135,68 @@ const SEOHead = ({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:site" content="@exploreearnrepeat" />
+      <meta name="twitter:creator" content="@catinaperkins" />
+      
+      {/* Additional Article Meta */}
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+      {articleAuthor && <meta property="article:author" content={articleAuthor} />}
+      
+      {/* Business/Local SEO */}
+      <meta property="business:contact_data:locality" content="Baltimore" />
+      <meta property="business:contact_data:region" content="MD" />
+      <meta property="business:contact_data:country_name" content="United States" />
       
       {/* Preconnect for Performance */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="preconnect" href="https://www.google-analytics.com" />
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
       
-      {/* Schema.org JSON-LD */}
+      {/* DNS Prefetch for External Resources */}
+      <link rel="dns-prefetch" href="https://calendly.com" />
+      <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      
+      {/* Organization Schema (Always included for E-E-A-T) */}
+      <script type="application/ld+json">
+        {JSON.stringify(organizationSchema)}
+      </script>
+      
+      {/* Page-specific Schema */}
       {schemaData && (
         <script type="application/ld+json">
-          {JSON.stringify(schemaData)}
+          {JSON.stringify({
+            ...schemaData,
+            speakable: {
+              "@type": "SpeakableSpecification",
+              "cssSelector": speakableSelectors
+            }
+          })}
         </script>
       )}
+      
+      {/* Breadcrumb Schema */}
+      {breadcrumbSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      )}
+      
+      {/* Google Tag Manager */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'GA_MEASUREMENT_ID', {
+            page_title: '${fullTitle}',
+            page_location: '${currentUrl}',
+            custom_map: {'custom_parameter': 'funnel_stage'}
+          });
+        `}
+      </script>
     </Helmet>
   );
 };

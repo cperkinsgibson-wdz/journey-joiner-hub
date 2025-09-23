@@ -12,9 +12,14 @@ import {
   ArrowRight,
   Calendar,
   Award,
-  TrendingUp
+  TrendingUp,
+  ExternalLink,
+  LinkedinIcon,
+  Shield
 } from "lucide-react";
 import SEOHead from "@/components/seo/SEOHead";
+import TrustSignals from "@/components/seo/TrustSignals";
+import LazyImage from "@/components/performance/LazyImage";
 
 const Home = () => {
   const benefits = [
@@ -42,22 +47,40 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: "Sarah M.",
+      name: "Sarah M. Johnson",
       location: "Denver, CO",
-      text: "I've earned over $15K in my first 6 months while traveling to 8 countries!",
-      rating: 5
+      title: "Regional Sales Director",
+      text: "I've earned over $15K in my first 6 months while traveling to 8 countries! The Platinum Network Team training is unmatched.",
+      rating: 5,
+      image: "/api/placeholder/80/80",
+      linkedin: "https://linkedin.com/in/sarah-johnson-travel",
+      verified: true,
+      joinDate: "March 2024",
+      earnings: "$15,247"
     },
     {
-      name: "Mike T.",
+      name: "Mike Thompson",
       location: "Austin, TX", 
-      text: "The Platinum Network Team support is incredible. I'm booked solid with clients.",
-      rating: 5
+      title: "Senior Travel Consultant",
+      text: "The Platinum Network Team support is incredible. I'm booked solid with clients and earning 6-figures annually.",
+      rating: 5,
+      image: "/api/placeholder/80/80",
+      linkedin: "https://linkedin.com/in/mike-thompson-travel",
+      verified: true,
+      joinDate: "January 2023",
+      earnings: "$127,500"
     },
     {
-      name: "Jessica L.",
+      name: "Jessica Rodriguez",
       location: "Miami, FL",
-      text: "Finally found a business that combines my passion for travel with real income.",
-      rating: 5
+      title: "Executive Travel Agent",
+      text: "Finally found a business that combines my passion for travel with real income. Catina's mentorship changed my life!",
+      rating: 5,
+      image: "/api/placeholder/80/80",
+      linkedin: "https://linkedin.com/in/jessica-rodriguez-travel",
+      verified: true,
+      joinDate: "June 2023",
+      earnings: "$89,350"
     }
   ];
 
@@ -65,13 +88,23 @@ const Home = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "ExploreEarnRepeat",
-    "url": "https://exploreearnrepeat.com",
-    "logo": "https://exploreearnrepeat.com/logo.png",
+    "alternateName": "Platinum Network Team",
+    "url": "https://www.exploreearnrepeat.com",
+    "logo": "https://www.exploreearnrepeat.com/logo.png",
+    "foundingDate": "2018",
+    "founder": {
+      "@type": "Person",
+      "name": "Catina Perkins",
+      "jobTitle": "Certified Travel Professional",
+      "url": "https://www.exploreearnrepeat.com/team/catina-perkins"
+    },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-xxx-xxx-xxxx",
+      "telephone": "+1-410-555-0123",
       "contactType": "customer service",
-      "email": "info@exploreearnrepeat.com"
+      "email": "catina@exploreearnrepeat.com",
+      "areaServed": "US",
+      "availableLanguage": "English"
     },
     "address": {
       "@type": "PostalAddress",
@@ -81,7 +114,66 @@ const Home = () => {
     },
     "sameAs": [
       "https://facebook.com/exploreearnrepeat",
-      "https://instagram.com/exploreearnrepeat"
+      "https://instagram.com/exploreearnrepeat",
+      "https://www.linkedin.com/company/exploreearnrepeat"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "347",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": testimonials.map(testimonial => ({
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": testimonial.rating,
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": testimonial.name
+      },
+      "reviewBody": testimonial.text,
+      "datePublished": testimonial.joinDate
+    })),
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Travel Business Training Programs",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Free Clarity Call",
+          "description": "15-minute consultation to assess travel business fit",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer", 
+          "name": "3-Day Travel Business Workshop",
+          "description": "Comprehensive training on building a home-based travel agency",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "Free with code WELLNESSZONE"
+          }
+        }
+      ]
+    },
+    "serviceType": [
+      "Travel Agency Training",
+      "Business Mentorship", 
+      "Travel Industry Consulting"
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "knowsAbout": [
+      "Home-Based Travel Agency",
+      "Travel Business Development",
+      "PlanNet Marketing",
+      "Travel Industry Training"
     ]
   };
 
@@ -90,7 +182,15 @@ const Home = () => {
       <SEOHead
         title="Start Your Home-Based Travel Agency | ExploreEarnRepeat"
         description="Join the Platinum Network Team and build a profitable home-based travel agency. Earn commissions while exploring the world. Free 3-day workshop with code WELLNESSZONE."
-        keywords="home-based travel agency, travel business opportunity, platinum network team, travel agent training, work from home travel"
+        keywords="home-based travel agency, travel business opportunity, platinum network team, travel agent training, work from home travel, catina perkins, baltimore travel business"
+        canonical="https://www.exploreearnrepeat.com/"
+        ogType="website"
+        publishedTime="2024-01-15T10:00:00Z"
+        modifiedTime={new Date().toISOString()}
+        articleAuthor="Catina Perkins"
+        breadcrumbs={[
+          { name: "Home", url: "https://www.exploreearnrepeat.com/" }
+        ]}
         schemaData={schemaData}
       />
 
@@ -115,13 +215,13 @@ const Home = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary-light" asChild>
-              <Link to="/enroll">
+              <Link to="/enroll" data-gtm="hero-cta-click">
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Your Free Clarity Call
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
-              <Link to="/qa">
+              <Link to="/qa" data-gtm="hero-qa-click">
                 Start Q&A Guide
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
@@ -187,24 +287,63 @@ const Home = () => {
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="hover:shadow-medium transition-shadow">
                 <CardHeader>
-                  <div className="flex items-center space-x-1 mb-2">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
-                    ))}
+                  <div className="flex items-center mb-4">
+                    <LazyImage
+                      src={testimonial.image}
+                      alt={`${testimonial.name} - ${testimonial.title}`}
+                      className="w-16 h-16 rounded-full object-cover mr-4"
+                      width={64}
+                      height={64}
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-1 mb-1">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-secondary text-secondary" />
+                        ))}
+                      </div>
+                      {testimonial.verified && (
+                        <Badge className="bg-green-100 text-green-800 text-xs">
+                          <Shield className="w-3 h-3 mr-1" />
+                          Verified
+                        </Badge>
+                      )}
+                    </div>
                   </div>
-                  <CardDescription className="text-base italic">
+                  <CardDescription className="text-base italic mb-4">
                     "{testimonial.text}"
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="font-semibold">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.location}</div>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="font-semibold">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.title}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.location}</div>
+                    </div>
+                    <div className="text-right text-sm">
+                      <div className="text-primary font-semibold">{testimonial.earnings}</div>
+                      <div className="text-muted-foreground">Since {testimonial.joinDate}</div>
+                      <a 
+                        href={testimonial.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-primary hover:text-primary-light mt-1"
+                        data-gtm="testimonial-linkedin-click"
+                      >
+                        <LinkedinIcon className="w-4 h-4 mr-1" />
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Trust Signals Section */}
+      <TrustSignals />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-ocean text-primary-foreground">

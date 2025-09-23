@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Team from "./pages/Team";
 import QAIndex from "./pages/QAIndex";
 import QACluster from "./pages/QACluster";
 import QADetail from "./pages/QADetail";
@@ -20,10 +21,13 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+import Analytics from "@/components/seo/Analytics";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <TooltipProvider>
+        <Analytics />
         <Toaster />
         <Sonner />
         <BrowserRouter>
@@ -31,6 +35,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/team/catina-perkins" element={<Team />} />
               <Route path="/qa" element={<QAIndex />} />
               <Route path="/qa/cluster/:clusterNumber" element={<QACluster />} />
               <Route path="/qa/cluster/:clusterNumber/:slug" element={<QADetail />} />
