@@ -157,7 +157,7 @@ const Enroll = () => {
                       <div>
                         <h3 className="font-semibold mb-1">Proven Track Record</h3>
                         <p className="text-sm text-muted-foreground">
-                          Over 500 successful travel agents trained with a 98% satisfaction rate
+                          Gold Builder in the Platinum Network Team with proven success and exceptional training results
                         </p>
                       </div>
                     </div>
@@ -252,12 +252,12 @@ const Enroll = () => {
                       />
                       <div>
                         <p className="mb-3">
-                          Team Leader of the Platinum Network Team with over 500 successful agents trained. 
-                          Catina has helped entrepreneurs from all backgrounds build thriving travel businesses.
+                          Gold Builder in the Platinum Network Team led by Mr. Preston Scott, who brings over 20 years of travel business expertise. 
+                          Catina helps entrepreneurs from all backgrounds build thriving travel businesses with proven systems and personalized support.
                         </p>
                         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                           <span>📍 Baltimore, MD</span>
-                          <span>⭐ 98% Success Rate</span>
+                          <span>⭐ Gold Builder Status</span>
                         </div>
                       </div>
                     </div>
