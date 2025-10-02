@@ -18,6 +18,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import SEOHead from "@/components/seo/SEOHead";
+import catinaPhoto from "@/assets/catina-perkins.jpg";
 
 const Enroll = () => {
   const benefits = [
@@ -238,9 +239,11 @@ const Enroll = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-start space-x-4">
-                      <div className="w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-primary-foreground font-bold text-2xl">CP</span>
-                      </div>
+                      <img 
+                        src={catinaPhoto}
+                        alt="Catina Perkins - Platinum Network Team Leader"
+                        className="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                      />
                       <div>
                         <p className="mb-3">
                           Team Leader of the Platinum Network Team with over 500 successful agents trained. 

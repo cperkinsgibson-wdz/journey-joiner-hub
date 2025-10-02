@@ -16,6 +16,7 @@ import {
   Globe
 } from "lucide-react";
 import SEOHead from "@/components/seo/SEOHead";
+import catinaPhoto from "@/assets/catina-perkins.jpg";
 
 const Team = () => {
   const catinaCredentials = [
@@ -133,7 +134,7 @@ const Team = () => {
               <div className="relative inline-block">
                 <div className="w-80 h-80 mx-auto rounded-full bg-gradient-success p-2">
                   <img 
-                    src="/api/placeholder/300/300" 
+                    src={catinaPhoto}
                     alt="Catina Perkins - Certified Travel Professional and Platinum Network Team Leader"
                     className="w-full h-full rounded-full object-cover"
                     loading="lazy"
@@ -283,7 +284,7 @@ const Team = () => {
                 <Mail className="w-6 h-6 mr-3" />
                 <div>
                   <div className="font-semibold">Email</div>
-                  <div className="text-primary-foreground/80">catina@exploreearnrepeat.com</div>
+                  <div className="text-primary-foreground/80">info@pathwaytraveladvisors.com</div>
                 </div>
               </div>
             </div>
