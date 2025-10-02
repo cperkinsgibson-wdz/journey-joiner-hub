@@ -217,7 +217,7 @@ const Home = () => {
             <Button 
               size="lg" 
               className="bg-secondary text-secondary-foreground hover:bg-secondary-light"
-              onClick={() => window.open('https://www.plannetmarketing.com/wellnesszone', '_blank', 'noopener,noreferrer')}
+              onClick={() => window.open('https://www.plannetmarketing.com/mapp/plannet-pt?leadshareid=1130466', '_blank', 'noopener,noreferrer')}
               data-gtm="hero-signup-click"
             >
               Get Started Now
@@ -353,7 +353,7 @@ const Home = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Travel Business Journey?</h2>
           <p className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
-            Sign up directly at plannetmarketing.com/wellnesszone or schedule a clarity call with Catina 
+            Sign up directly with PlanNet Marketing or schedule a clarity call with Catina 
             who will personally walk you through the enrollment process.
           </p>
           
@@ -361,7 +361,7 @@ const Home = () => {
             <Button 
               size="lg" 
               className="bg-secondary text-secondary-foreground hover:bg-secondary-light"
-              onClick={() => window.open('https://www.plannetmarketing.com/wellnesszone', '_blank', 'noopener,noreferrer')}
+              onClick={() => window.open('https://www.plannetmarketing.com/mapp/plannet-pt?leadshareid=1130466', '_blank', 'noopener,noreferrer')}
             >
               <CheckCircle className="w-5 h-5 mr-2" />
               Sign Up Now

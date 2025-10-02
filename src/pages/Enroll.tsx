@@ -48,7 +48,7 @@ const Enroll = () => {
     <>
       <SEOHead
         title="Get Started - Enroll in Your Travel Business Today"
-        description="Ready to start your travel business journey? Sign up directly at plannetmarketing.com/wellnesszone or schedule a free clarity call with Catina Perkins to guide you through enrollment."
+        description="Ready to start your travel business journey? Sign up directly with PlanNet Marketing or schedule a free clarity call with Catina Perkins to guide you through enrollment."
         keywords="enroll travel business, sign up travel agency, get started PlanNet Marketing, travel business enrollment"
         schemaData={schemaData}
       />
@@ -92,7 +92,7 @@ const Enroll = () => {
                   <Button 
                     size="lg" 
                     className="w-full gap-2"
-                    onClick={() => window.open('https://www.plannetmarketing.com/wellnesszone', '_blank', 'noopener,noreferrer')}
+                    onClick={() => window.open('https://www.plannetmarketing.com/mapp/plannet-pt?leadshareid=1130466', '_blank', 'noopener,noreferrer')}
                   >
                     Sign Up Now
                     <ArrowRight className="w-5 h-5" />
@@ -101,7 +101,7 @@ const Enroll = () => {
                     You'll be redirected to PlanNet Marketing's enrollment page
                   </p>
                   <p className="text-xs mt-2">
-                    <a href="https://www.plannetmarketing.com/wellnesszone" target="_blank" rel="noopener noreferrer" className="underline text-primary">
+                    <a href="https://www.plannetmarketing.com/mapp/plannet-pt?leadshareid=1130466" target="_blank" rel="noopener noreferrer" className="underline text-primary">
                       Having trouble? Open the signup page directly
                     </a>
                   </p>
@@ -192,13 +192,13 @@ const Enroll = () => {
                         <Button 
                           size="lg" 
                           className="w-full gap-2"
-                          onClick={() => window.open('https://www.plannetmarketing.com/wellnesszone', '_blank', 'noopener,noreferrer')}
+                          onClick={() => window.open('https://www.plannetmarketing.com/mapp/plannet-pt?leadshareid=1130466', '_blank', 'noopener,noreferrer')}
                         >
                           Sign Up Directly
                           <ArrowRight className="w-5 h-5" />
                         </Button>
                         <p className="text-xs">
-                          <a href="https://www.plannetmarketing.com/wellnesszone" target="_blank" rel="noopener noreferrer" className="underline text-primary">
+                          <a href="https://www.plannetmarketing.com/mapp/plannet-pt?leadshareid=1130466" target="_blank" rel="noopener noreferrer" className="underline text-primary">
                             Having trouble? Open the signup page directly
                           </a>
                         </p>
