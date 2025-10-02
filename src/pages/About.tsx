@@ -16,7 +16,7 @@ import SEOHead from "@/components/seo/SEOHead";
 
 const About = () => {
   const achievements = [
-    { icon: Users, stat: "500+", label: "Successful Agents" },
+    { icon: Users, stat: "500+", label: "Successful Mentors" },
     { icon: TrendingUp, stat: "$2.5M+", label: "Total Commissions Paid" },
     { icon: MapPin, stat: "50+", label: "Countries Visited" },
     { icon: Award, stat: "98%", label: "Client Satisfaction" }
@@ -31,7 +31,7 @@ const About = () => {
     {
       icon: Award,
       title: "Proven Success System",
-      description: "Our Platinum Network Team has developed and refined training methods that consistently produce top-performing agents."
+      description: "Our Platinum Network Team has developed and refined training methods that consistently produce top-performing mentors."
     },
     {
       icon: Users,
@@ -168,7 +168,7 @@ const About = () => {
                   </p>
                   <p>
                     Under the leadership of Catina Perkins, our team has developed comprehensive training systems, 
-                    mentorship programs, and support structures that consistently produce top-performing travel agents.
+                    mentorship programs, and support structures that consistently produce top-performing travel mentors.
                   </p>
                   <p>
                     We believe that everyone deserves the freedom to work from anywhere while earning substantial 
@@ -217,9 +217,9 @@ const About = () => {
               <Star className="w-4 h-4 mr-2" />
               Real Results
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Hear From Our Successful Agents</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Hear From Our Successful Mentors</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Watch real success stories from agents who have transformed their lives with the Platinum Network Team.
+              Watch real success stories from mentors who have transformed their lives with the Platinum Network Team.
             </p>
           </div>
 
@@ -240,7 +240,7 @@ const About = () => {
                 </CardContent>
                 <CardHeader>
                   <CardTitle className="text-lg">{video.title}</CardTitle>
-                  <CardDescription>Agent Success Story</CardDescription>
+                  <CardDescription>Mentor Success Story</CardDescription>
                 </CardHeader>
               </Card>
             ))}
