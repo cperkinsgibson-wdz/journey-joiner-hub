@@ -215,15 +215,15 @@ const Home = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary-light" asChild>
-              <Link to="/enroll" data-gtm="hero-cta-click">
-                <Calendar className="w-5 h-5 mr-2" />
-                Book Your Free Clarity Call
-              </Link>
+              <a href="https://www.plannetmarketing.com/wellnesszone" target="_blank" rel="noopener noreferrer" data-gtm="hero-signup-click">
+                Get Started Now
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
-              <Link to="/qa" data-gtm="hero-qa-click">
-                Start Q&A Guide
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Link to="/enroll" data-gtm="hero-enroll-click">
+                <Calendar className="w-5 h-5 mr-2" />
+                Learn More
               </Link>
             </Button>
           </div>
@@ -350,20 +350,21 @@ const Home = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Travel Business Journey?</h2>
           <p className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
-            Take our quick Q&A assessment to see if you're a perfect fit for our proven system. 
-            Then book your free clarity call with our team.
+            Sign up directly at plannetmarketing.com/wellnesszone or schedule a clarity call with Catina 
+            who will personally walk you through the enrollment process.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary-light" asChild>
-              <Link to="/qa">
+              <a href="https://www.plannetmarketing.com/wellnesszone" target="_blank" rel="noopener noreferrer">
                 <CheckCircle className="w-5 h-5 mr-2" />
-                Take Q&A Assessment
-              </Link>
+                Sign Up Now
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
-              <Link to="/workshop">
-                Save Seat - Use Code WELLNESSZONE
+              <Link to="/enroll">
+                <Calendar className="w-5 h-5 mr-2" />
+                Schedule Clarity Call
               </Link>
             </Button>
           </div>
