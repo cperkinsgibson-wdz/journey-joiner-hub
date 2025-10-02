@@ -21,6 +21,7 @@ const Footer = () => {
   const legalLinks = [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
+    { name: "Income Disclosure", href: "/income-disclosure" },
   ];
 
   return (
