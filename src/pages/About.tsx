@@ -45,7 +45,8 @@ const About = () => {
     { url: "https://vimeo.com/1106554369?fl=pl&fe=sh", title: "Success Story 2" },
     { url: "https://vimeo.com/1106537270?fl=pl&fe=sh", title: "Success Story 3" },
     { url: "https://vimeo.com/1106544755?fl=pl&fe=sh", title: "Success Story 4" },
-    { url: "https://vimeo.com/1106141843?fl=pl&fe=sh", title: "Success Story 5" }
+    { url: "https://vimeo.com/1106141843?fl=pl&fe=sh", title: "Success Story 5" },
+    { url: "https://vimeo.com/1106131184?fl=pl&fe=sh", title: "Success Story 6" }
   ];
 
   const schemaData = {
