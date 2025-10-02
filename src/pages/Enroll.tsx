@@ -89,15 +89,13 @@ const Enroll = () => {
                     <p>✅ Begin building your business today</p>
                     <p>✅ Join the Platinum Network Team</p>
                   </div>
-                  <Button size="lg" className="w-full gap-2" asChild>
-                    <a 
-                      href="https://www.plannetmarketing.com/wellnesszone" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      Sign Up Now
-                      <ArrowRight className="w-5 h-5" />
-                    </a>
+                  <Button 
+                    size="lg" 
+                    className="w-full gap-2"
+                    onClick={() => window.open('https://www.plannetmarketing.com/wellnesszone', '_blank', 'noopener,noreferrer')}
+                  >
+                    Sign Up Now
+                    <ArrowRight className="w-5 h-5" />
                   </Button>
                   <p className="text-xs text-muted-foreground">
                     You'll be redirected to PlanNet Marketing's enrollment page
@@ -186,15 +184,13 @@ const Enroll = () => {
                     <div className="border-t pt-6">
                       <h3 className="font-semibold mb-3 text-center">Ready to Get Started?</h3>
                       <div className="space-y-3">
-                        <Button size="lg" className="w-full gap-2" asChild>
-                          <a 
-                            href="https://www.plannetmarketing.com/wellnesszone" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                          >
-                            Sign Up Directly
-                            <ArrowRight className="w-5 h-5" />
-                          </a>
+                        <Button 
+                          size="lg" 
+                          className="w-full gap-2"
+                          onClick={() => window.open('https://www.plannetmarketing.com/wellnesszone', '_blank', 'noopener,noreferrer')}
+                        >
+                          Sign Up Directly
+                          <ArrowRight className="w-5 h-5" />
                         </Button>
                         <Button size="lg" variant="outline" className="w-full gap-2" asChild>
                           <a 

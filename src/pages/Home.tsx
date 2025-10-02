@@ -214,11 +214,14 @@ const Home = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary-light" asChild>
-              <a href="https://www.plannetmarketing.com/wellnesszone" target="_blank" rel="noopener noreferrer" data-gtm="hero-signup-click">
-                Get Started Now
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </a>
+            <Button 
+              size="lg" 
+              className="bg-secondary text-secondary-foreground hover:bg-secondary-light"
+              onClick={() => window.open('https://www.plannetmarketing.com/wellnesszone', '_blank', 'noopener,noreferrer')}
+              data-gtm="hero-signup-click"
+            >
+              Get Started Now
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
               <Link to="/enroll" data-gtm="hero-enroll-click">
@@ -355,11 +358,13 @@ const Home = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary-light" asChild>
-              <a href="https://www.plannetmarketing.com/wellnesszone" target="_blank" rel="noopener noreferrer">
-                <CheckCircle className="w-5 h-5 mr-2" />
-                Sign Up Now
-              </a>
+            <Button 
+              size="lg" 
+              className="bg-secondary text-secondary-foreground hover:bg-secondary-light"
+              onClick={() => window.open('https://www.plannetmarketing.com/wellnesszone', '_blank', 'noopener,noreferrer')}
+            >
+              <CheckCircle className="w-5 h-5 mr-2" />
+              Sign Up Now
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
               <Link to="/enroll">
