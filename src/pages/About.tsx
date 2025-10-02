@@ -40,6 +40,14 @@ const About = () => {
     }
   ];
 
+  const testimonialVideos = [
+    { url: "https://vimeo.com/1106575112?fl=pl&fe=sh", title: "Success Story 1" },
+    { url: "https://vimeo.com/1106554369?fl=pl&fe=sh", title: "Success Story 2" },
+    { url: "https://vimeo.com/1106537270?fl=pl&fe=sh", title: "Success Story 3" },
+    { url: "https://vimeo.com/1106544755?fl=pl&fe=sh", title: "Success Story 4" },
+    { url: "https://vimeo.com/1106141843?fl=pl&fe=sh", title: "Success Story 5" }
+  ];
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
@@ -84,9 +92,46 @@ const About = () => {
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90">
-              Led by Catina Perkins and the Platinum Network Team, we've helped hundreds of entrepreneurs 
+              Led by Preston Scott (Head of Platinum Network), Catina Perkins, and our elite team, we've helped hundreds of entrepreneurs 
               transform their passion for travel into profitable, sustainable businesses.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section - Preston Scott */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 bg-accent text-accent-foreground">
+                <Star className="w-4 h-4 mr-2" />
+                Leadership
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Preston Scott</h2>
+              <p className="text-xl text-muted-foreground">Head of the Platinum Network</p>
+            </div>
+            
+            <Card className="shadow-elegant overflow-hidden">
+              <CardContent className="p-0">
+                <div className="aspect-video w-full">
+                  <iframe
+                    src="https://player.vimeo.com/video/1106137217"
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    title="Preston Scott - Head of Platinum Network"
+                  ></iframe>
+                </div>
+              </CardContent>
+              <CardHeader>
+                <CardTitle>Leading with Excellence</CardTitle>
+                <CardDescription className="text-base">
+                  Preston Scott leads the Platinum Network Team with proven strategies and dedication to helping entrepreneurs build successful travel businesses.
+                </CardDescription>
+              </CardHeader>
+            </Card>
           </div>
         </div>
       </section>
@@ -164,8 +209,47 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Values */}
+      {/* Success Stories - Video Testimonials */}
       <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-secondary text-secondary-foreground">
+              <Star className="w-4 h-4 mr-2" />
+              Real Results
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Hear From Our Successful Agents</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Watch real success stories from agents who have transformed their lives with the Platinum Network Team.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {testimonialVideos.map((video, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-medium transition-shadow">
+                <CardContent className="p-0">
+                  <div className="aspect-video w-full">
+                    <iframe
+                      src={`https://player.vimeo.com/video/${video.url.split('/')[3].split('?')[0]}`}
+                      className="w-full h-full"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      title={video.title}
+                    ></iframe>
+                  </div>
+                </CardContent>
+                <CardHeader>
+                  <CardTitle className="text-lg">{video.title}</CardTitle>
+                  <CardDescription>Agent Success Story</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values */}
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Sets Us Apart</h2>
@@ -193,7 +277,7 @@ const About = () => {
       </section>
 
       {/* Compliance Notice */}
-      <section className="py-16 bg-muted">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Card className="border-l-4 border-l-accent">
