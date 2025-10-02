@@ -190,17 +190,11 @@ const Workshop = () => {
                   <Button 
                     size="lg" 
                     className="bg-secondary text-secondary-foreground hover:bg-secondary-light text-xl px-8 py-4 h-auto"
-                    asChild
+                    onClick={() => window.open('https://travelbizworkshop.com?utm_source=exploreearnrepeat&utm_medium=website&utm_campaign=workshop', '_blank', 'noopener,noreferrer')}
                   >
-                    <a 
-                      href="https://travelbizworkshop.com?utm_source=exploreearnrepeat&utm_medium=website&utm_campaign=workshop"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Calendar className="w-6 h-6 mr-3" />
-                      Save Your Seat - Use Code WELLNESSZONE
-                      <ArrowRight className="w-6 h-6 ml-3" />
-                    </a>
+                    <Calendar className="w-6 h-6 mr-3" />
+                    Save Your Seat - Use Code WELLNESSZONE
+                    <ArrowRight className="w-6 h-6 ml-3" />
                   </Button>
                   
                   <p className="text-sm text-primary-foreground/80">
