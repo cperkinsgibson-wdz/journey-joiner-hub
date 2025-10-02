@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import SEOHead from "@/components/seo/SEOHead";
+import workshopPromo from "@/assets/travel-workshop-promo.jpg";
 
 const Workshop = () => {
   const workshopBenefits = [
@@ -72,6 +73,16 @@ const Workshop = () => {
                 Discover how to build a 6-figure home-based travel agency, even with zero experience. 
                 Join thousands who've transformed their passion for travel into profitable businesses.
               </p>
+
+              {/* Promotional Image */}
+              <div className="mb-8 max-w-2xl mx-auto">
+                <img 
+                  src={workshopPromo}
+                  alt="Travel Business Workshop - Use Code WELLNESSZONE at travelbizworkshop.com"
+                  className="w-full rounded-lg shadow-strong"
+                  loading="lazy"
+                />
+              </div>
 
               <div className="flex items-center justify-center space-x-4 mb-8">
                 <div className="flex items-center space-x-1">
