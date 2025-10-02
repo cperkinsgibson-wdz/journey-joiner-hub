@@ -100,6 +100,11 @@ const Enroll = () => {
                   <p className="text-xs text-muted-foreground">
                     You'll be redirected to PlanNet Marketing's enrollment page
                   </p>
+                  <p className="text-xs mt-2">
+                    <a href="https://www.plannetmarketing.com/wellnesszone" target="_blank" rel="noopener noreferrer" className="underline text-primary">
+                      Having trouble? Open the signup page directly
+                    </a>
+                  </p>
                 </CardContent>
               </Card>
 
@@ -192,6 +197,11 @@ const Enroll = () => {
                           Sign Up Directly
                           <ArrowRight className="w-5 h-5" />
                         </Button>
+                        <p className="text-xs">
+                          <a href="https://www.plannetmarketing.com/wellnesszone" target="_blank" rel="noopener noreferrer" className="underline text-primary">
+                            Having trouble? Open the signup page directly
+                          </a>
+                        </p>
                         <Button size="lg" variant="outline" className="w-full gap-2" asChild>
                           <a 
                             href="https://calendly.com/catina-perkins" 
