@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { LayoutDashboard, LogOut, User } from 'lucide-react';
+import { LayoutDashboard, LogOut, User, FileQuestion, FolderTree } from 'lucide-react';
 
 const Dashboard = () => {
   const { user, signOut, isAdmin, isEditor, loading } = useAuth();
@@ -83,29 +83,55 @@ const Dashboard = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>FAQ Management</CardTitle>
-              <CardDescription>Coming soon</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <FileQuestion className="w-5 h-5" />
+                FAQ Management
+              </CardTitle>
+              <CardDescription>
+                {isAdmin || isEditor 
+                  ? 'Create and manage FAQ content'
+                  : 'You need admin or editor role'}
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground">
-                {isAdmin || isEditor 
-                  ? 'FAQ editor and manager will be available here.'
-                  : 'You need admin or editor role to manage FAQs.'}
-              </p>
+              {isAdmin || isEditor ? (
+                <Link to="/admin/faqs">
+                  <Button className="w-full">
+                    Manage FAQs
+                  </Button>
+                </Link>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  You need admin or editor role to manage FAQs.
+                </p>
+              )}
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Categories</CardTitle>
-              <CardDescription>Coming soon</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <FolderTree className="w-5 h-5" />
+                Categories
+              </CardTitle>
+              <CardDescription>
+                {isAdmin || isEditor
+                  ? 'Organize FAQs into categories'
+                  : 'You need admin or editor role'}
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground">
-                {isAdmin || isEditor
-                  ? 'Category management will be available here.'
-                  : 'You need admin or editor role to manage categories.'}
-              </p>
+              {isAdmin || isEditor ? (
+                <Link to="/admin/categories">
+                  <Button className="w-full">
+                    Manage Categories
+                  </Button>
+                </Link>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  You need admin or editor role to manage categories.
+                </p>
+              )}
             </CardContent>
           </Card>
         </div>

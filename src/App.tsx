@@ -22,6 +22,9 @@ import IncomeDisclosure from "./pages/IncomeDisclosure";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/Login";
 import AdminDashboard from "./pages/admin/Dashboard";
+import FAQManager from "./pages/admin/FAQManager";
+import CategoryManager from "./pages/admin/CategoryManager";
+import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -38,8 +41,11 @@ const App = () => (
             <Analytics />
             <Routes>
               {/* Admin routes (no layout) */}
+              <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/faqs" element={<FAQManager />} />
+              <Route path="/admin/categories" element={<CategoryManager />} />
               
               {/* Public routes (with layout) */}
               <Route element={<Layout />}>
