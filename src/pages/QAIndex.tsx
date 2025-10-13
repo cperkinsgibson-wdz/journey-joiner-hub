@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,12 +9,74 @@ import { Input } from "@/components/ui/input";
 import { Search, Calendar, ArrowRight } from "lucide-react";
 import SEOHead from "@/components/seo/SEOHead";
 import Breadcrumbs from "@/components/qa/Breadcrumbs";
-import { getAllQAItems, getAllClusters, getClusterTheme, getFunnelStageColor, QAItem } from "@/utils/qa-utils";
+import { getFunnelStageColor, QAItem } from "@/utils/qa-utils";
 
 const QAIndex = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const allItems = getAllQAItems();
-  const clusters = getAllClusters();
+  const queryClient = useQueryClient();
+
+  // Fetch all QA items
+  const { data: allItems = [], isLoading } = useQuery({
+    queryKey: ['qa-items'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('qa_items')
+        .select('*')
+        .order('cluster_number')
+        .order('order_in_cluster');
+      
+      if (error) throw error;
+      
+      return (data || []).map(item => ({
+        cluster: item.cluster_number,
+        funnel_stage: item.funnel_stage as "TOFU" | "MOFU" | "BOFU",
+        order_in_cluster: item.order_in_cluster,
+        question: item.question,
+        answer: item.answer,
+        cta_label: item.cta_label,
+        cta_url: item.cta_url,
+        slug: item.slug,
+      })) as QAItem[];
+    },
+  });
+
+  // Fetch all clusters
+  const { data: clusters = [] } = useQuery({
+    queryKey: ['qa-clusters-list'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('qa_clusters')
+        .select('*')
+        .order('cluster_number');
+      
+      if (error) throw error;
+      return data || [];
+    },
+  });
+
+  // Subscribe to realtime updates
+  useEffect(() => {
+    const itemsChannel = supabase
+      .channel('qa-items-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'qa_items' }, () => {
+        // Refetch when items change
+        queryClient.invalidateQueries({ queryKey: ['qa-items'] });
+      })
+      .subscribe();
+
+    const clustersChannel = supabase
+      .channel('qa-clusters-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'qa_clusters' }, () => {
+        // Refetch when clusters change
+        queryClient.invalidateQueries({ queryKey: ['qa-clusters-list'] });
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(itemsChannel);
+      supabase.removeChannel(clustersChannel);
+    };
+  }, []);
 
   const filteredItems = searchQuery
     ? allItems.filter(item =>
@@ -69,6 +133,10 @@ const QAIndex = () => {
     }
   };
 
+  if (isLoading) {
+    return <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">Loading...</div>;
+  }
+
   return (
     <>
       <SEOHead
@@ -89,7 +157,7 @@ const QAIndex = () => {
               Home-Based Travel Agency Q&A
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Get expert answers to 120 common questions about building your family-first, 
+              Get expert answers to {allItems.length} common questions about building your family-first, 
               income-growth travel business. From basics (TOFU) to implementation (BOFU) to optimization (MOFU).
             </p>
             
@@ -168,22 +236,22 @@ const QAIndex = () => {
             </div>
           ) : (
             <div className="grid gap-8 md:gap-12">
-              {clusters.map((clusterNumber) => {
-                const clusterItems = allItems.filter(item => item.cluster === clusterNumber);
+              {clusters.map((cluster) => {
+                const clusterItems = allItems.filter(item => item.cluster === cluster.cluster_number);
                 return (
-                  <Card key={clusterNumber} className="shadow-medium">
+                  <Card key={cluster.id} className="shadow-medium">
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-2xl">
                           <Link 
-                            to={`/qa/cluster/${clusterNumber}`}
+                            to={`/qa/cluster/${cluster.cluster_number}`}
                             className="hover:text-primary transition-colors"
                           >
-                            Cluster {clusterNumber}: {getClusterTheme(clusterNumber)}
+                            Cluster {cluster.cluster_number}: {cluster.theme}
                           </Link>
                         </CardTitle>
                         <Button variant="outline" size="sm" asChild>
-                          <Link to={`/qa/cluster/${clusterNumber}`}>
+                          <Link to={`/qa/cluster/${cluster.cluster_number}`}>
                             View All
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Link>

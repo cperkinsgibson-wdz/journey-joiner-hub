@@ -8,14 +8,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { getClusterTheme } from "@/utils/qa-utils";
 
 interface BreadcrumbsProps {
   cluster?: number;
+  clusterTheme?: string;
   questionTitle?: string;
 }
 
-const Breadcrumbs = ({ cluster, questionTitle }: BreadcrumbsProps) => {
+const Breadcrumbs = ({ cluster, clusterTheme, questionTitle }: BreadcrumbsProps) => {
   return (
     <Breadcrumb className="mb-6">
       <BreadcrumbList>
@@ -37,12 +37,12 @@ const Breadcrumbs = ({ cluster, questionTitle }: BreadcrumbsProps) => {
               {questionTitle ? (
                 <BreadcrumbLink asChild>
                   <Link to={`/qa/cluster/${cluster}`}>
-                    Cluster {cluster}: {getClusterTheme(cluster)}
+                    Cluster {cluster}: {clusterTheme || `Cluster ${cluster}`}
                   </Link>
                 </BreadcrumbLink>
               ) : (
                 <BreadcrumbPage>
-                  Cluster {cluster}: {getClusterTheme(cluster)}
+                  Cluster {cluster}: {clusterTheme || `Cluster ${cluster}`}
                 </BreadcrumbPage>
               )}
             </BreadcrumbItem>

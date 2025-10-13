@@ -24,6 +24,8 @@ import AdminLogin from "./pages/admin/Login";
 import AdminDashboard from "./pages/admin/Dashboard";
 import FAQManager from "./pages/admin/FAQManager";
 import CategoryManager from "./pages/admin/CategoryManager";
+import QAClusterManager from "./pages/admin/QAClusterManager";
+import QAItemManager from "./pages/admin/QAItemManager";
 import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
@@ -44,8 +46,10 @@ const App = () => (
               <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
-              <Route path="/admin/faqs" element={<FAQManager />} />
-              <Route path="/admin/categories" element={<CategoryManager />} />
+            <Route path="/admin/faqs" element={<FAQManager />} />
+            <Route path="/admin/categories" element={<CategoryManager />} />
+            <Route path="/admin/qa-clusters" element={<QAClusterManager />} />
+            <Route path="/admin/qa-items" element={<QAItemManager />} />
               
               {/* Public routes (with layout) */}
               <Route element={<Layout />}>

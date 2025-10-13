@@ -174,6 +174,86 @@ export type Database = {
           },
         ]
       }
+      qa_clusters: {
+        Row: {
+          cluster_number: number
+          created_at: string
+          id: string
+          sort_order: number
+          theme: string
+          updated_at: string
+        }
+        Insert: {
+          cluster_number: number
+          created_at?: string
+          id?: string
+          sort_order?: number
+          theme: string
+          updated_at?: string
+        }
+        Update: {
+          cluster_number?: number
+          created_at?: string
+          id?: string
+          sort_order?: number
+          theme?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      qa_items: {
+        Row: {
+          answer: string
+          cluster_id: string
+          cluster_number: number
+          created_at: string
+          cta_label: string
+          cta_url: string
+          funnel_stage: string
+          id: string
+          order_in_cluster: number
+          question: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          answer: string
+          cluster_id: string
+          cluster_number: number
+          created_at?: string
+          cta_label: string
+          cta_url: string
+          funnel_stage: string
+          id?: string
+          order_in_cluster: number
+          question: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          answer?: string
+          cluster_id?: string
+          cluster_number?: number
+          created_at?: string
+          cta_label?: string
+          cta_url?: string
+          funnel_stage?: string
+          id?: string
+          order_in_cluster?: number
+          question?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "qa_items_cluster_id_fkey"
+            columns: ["cluster_id"]
+            isOneToOne: false
+            referencedRelation: "qa_clusters"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string

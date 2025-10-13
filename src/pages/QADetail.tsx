@@ -1,28 +1,121 @@
 import { useParams, Link, Navigate } from "react-router-dom";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import SEOHead from "@/components/seo/SEOHead";
 import Breadcrumbs from "@/components/qa/Breadcrumbs";
-import { getQABySlug, getFunnelStageColor, getPrevNextInCluster, getClusterTheme } from "@/utils/qa-utils";
+import { getFunnelStageColor, QAItem } from "@/utils/qa-utils";
 
 const QADetail = () => {
   const { clusterNumber, slug } = useParams();
   const cluster = parseInt(clusterNumber || "0");
+  const queryClient = useQueryClient();
   
   if (!cluster || !slug) {
     return <Navigate to="/qa" replace />;
   }
 
-  const qaItem = getQABySlug(cluster, slug);
+  // Fetch the QA item
+  const { data: qaItem, isLoading } = useQuery({
+    queryKey: ['qa-item', cluster, slug],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('qa_items')
+        .select('*')
+        .eq('cluster_number', cluster)
+        .eq('slug', slug)
+        .single();
+      
+      if (error || !data) return null;
+      
+      return {
+        cluster: data.cluster_number,
+        funnel_stage: data.funnel_stage as "TOFU" | "MOFU" | "BOFU",
+        order_in_cluster: data.order_in_cluster,
+        question: data.question,
+        answer: data.answer,
+        cta_label: data.cta_label,
+        cta_url: data.cta_url,
+        slug: data.slug,
+      } as QAItem;
+    },
+  });
+
+  // Fetch cluster info
+  const { data: clusterInfo } = useQuery({
+    queryKey: ['qa-cluster', cluster],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('qa_clusters')
+        .select('*')
+        .eq('cluster_number', cluster)
+        .single();
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  // Fetch all items in cluster for prev/next
+  const { data: clusterItems = [] } = useQuery({
+    queryKey: ['qa-items', cluster],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('qa_items')
+        .select('*')
+        .eq('cluster_number', cluster)
+        .order('order_in_cluster');
+      
+      if (error) throw error;
+      
+      return (data || []).map(item => ({
+        cluster: item.cluster_number,
+        funnel_stage: item.funnel_stage as "TOFU" | "MOFU" | "BOFU",
+        order_in_cluster: item.order_in_cluster,
+        question: item.question,
+        answer: item.answer,
+        cta_label: item.cta_label,
+        cta_url: item.cta_url,
+        slug: item.slug,
+      })) as QAItem[];
+    },
+  });
+
+  // Subscribe to realtime updates
+  useEffect(() => {
+    const channel = supabase
+      .channel('qa-item-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'qa_items' }, () => {
+        queryClient.invalidateQueries({ queryKey: ['qa-item', cluster, slug] });
+        queryClient.invalidateQueries({ queryKey: ['qa-items', cluster] });
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'qa_clusters' }, () => {
+        queryClient.invalidateQueries({ queryKey: ['qa-cluster', cluster] });
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [cluster, slug, queryClient]);
   
+  if (isLoading) {
+    return <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">Loading...</div>;
+  }
+
   if (!qaItem) {
     return <Navigate to="/qa" replace />;
   }
 
-  const { prev, next } = getPrevNextInCluster(cluster, slug);
-  const clusterTheme = getClusterTheme(cluster);
+  // Find prev/next items
+  const currentIndex = clusterItems.findIndex(item => item.slug === slug);
+  const prev = currentIndex > 0 ? clusterItems[currentIndex - 1] : null;
+  const next = currentIndex < clusterItems.length - 1 ? clusterItems[currentIndex + 1] : null;
+  
+  const clusterTheme = clusterInfo?.theme || `Cluster ${cluster}`;
 
   const getFunnelStageContext = (stage: string) => {
     switch (stage) {
@@ -98,7 +191,7 @@ const QADetail = () => {
 
       <div className="min-h-screen bg-gradient-subtle">
         <div className="container mx-auto px-4 py-8 max-w-4xl">
-          <Breadcrumbs cluster={cluster} questionTitle={qaItem.question} />
+          <Breadcrumbs cluster={cluster} clusterTheme={clusterTheme} questionTitle={qaItem.question} />
           
           {/* Main Content */}
           <article className="mb-12">
@@ -112,7 +205,7 @@ const QADetail = () => {
                     {qaItem.funnel_stage} Question
                   </Badge>
                   <Badge variant="secondary">
-                    Cluster {cluster} • {getClusterTheme(cluster)}
+                    Cluster {cluster} • {clusterTheme}
                   </Badge>
                 </div>
                 <h1 className="text-2xl md:text-3xl font-bold leading-tight">

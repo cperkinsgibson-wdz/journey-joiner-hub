@@ -134,6 +134,59 @@ const Dashboard = () => {
               )}
             </CardContent>
           </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <FolderTree className="w-5 h-5" />
+                QA Clusters
+              </CardTitle>
+              <CardDescription>
+                {isAdmin || isEditor
+                  ? 'Manage Q&A clusters'
+                  : 'You need admin or editor role'}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {isAdmin || isEditor ? (
+                <Link to="/admin/qa-clusters">
+                  <Button className="w-full">
+                    Manage QA Clusters
+                  </Button>
+                </Link>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  You need admin or editor role to manage QA clusters.
+                </p>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <FileQuestion className="w-5 h-5" />
+                QA Items
+              </CardTitle>
+              <CardDescription>
+                {isAdmin || isEditor
+                  ? 'Manage Q&A items'
+                  : 'You need admin or editor role'}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {isAdmin || isEditor ? (
+                <Link to="/admin/qa-items">
+                  <Button className="w-full">
+                    Manage QA Items
+                  </Button>
+                </Link>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  You need admin or editor role to manage QA items.
+                </p>
+              )}
+            </CardContent>
+          </Card>
         </div>
 
         {!isAdmin && !isEditor && (

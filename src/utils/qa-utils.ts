@@ -1,4 +1,4 @@
-import qaData from '@/data/travel-qa.json';
+import { supabase } from '@/integrations/supabase/client';
 
 export interface QAItem {
   cluster: number;
@@ -8,7 +8,14 @@ export interface QAItem {
   answer: string;
   cta_label: string;
   cta_url: string;
-  slug?: string;
+  slug: string;
+}
+
+export interface QACluster {
+  id: string;
+  cluster_number: number;
+  theme: string;
+  sort_order: number;
 }
 
 export const createSlug = (question: string): string => {
@@ -19,54 +26,79 @@ export const createSlug = (question: string): string => {
     .trim();
 };
 
-export const getAllQAItems = (): QAItem[] => {
-  return qaData.map(item => ({
-    ...item,
+export const getAllQAItems = async (): Promise<QAItem[]> => {
+  const { data, error } = await supabase
+    .from('qa_items')
+    .select('*')
+    .order('cluster_number')
+    .order('order_in_cluster');
+  
+  if (error) throw error;
+  
+  return (data || []).map(item => ({
+    cluster: item.cluster_number,
     funnel_stage: item.funnel_stage as "TOFU" | "MOFU" | "BOFU",
-    slug: createSlug(item.question)
+    order_in_cluster: item.order_in_cluster,
+    question: item.question,
+    answer: item.answer,
+    cta_label: item.cta_label,
+    cta_url: item.cta_url,
+    slug: item.slug,
   }));
 };
 
-export const getQAByCluster = (clusterNumber: number): QAItem[] => {
-  return getAllQAItems()
-    .filter(item => item.cluster === clusterNumber)
-    .sort((a, b) => a.order_in_cluster - b.order_in_cluster);
+export const getQAByCluster = async (clusterNumber: number): Promise<QAItem[]> => {
+  const { data, error } = await supabase
+    .from('qa_items')
+    .select('*')
+    .eq('cluster_number', clusterNumber)
+    .order('order_in_cluster');
+  
+  if (error) throw error;
+  
+  return (data || []).map(item => ({
+    cluster: item.cluster_number,
+    funnel_stage: item.funnel_stage as "TOFU" | "MOFU" | "BOFU",
+    order_in_cluster: item.order_in_cluster,
+    question: item.question,
+    answer: item.answer,
+    cta_label: item.cta_label,
+    cta_url: item.cta_url,
+    slug: item.slug,
+  }));
 };
 
-export const getQABySlug = (clusterNumber: number, slug: string): QAItem | null => {
-  const clusterItems = getQAByCluster(clusterNumber);
-  return clusterItems.find(item => item.slug === slug) || null;
-};
-
-export const getAllClusters = (): number[] => {
-  const clusters = new Set(qaData.map(item => item.cluster));
-  return Array.from(clusters).sort((a, b) => a - b);
-};
-
-export const getClusterTheme = (clusterNumber: number): string => {
-  const themes: Record<number, string> = {
-    1: "Getting Started Basics",
-    2: "Experience & Skills",
-    3: "Work-Life Balance",
-    4: "Industry & Competition",
-    5: "Technology & Challenges",
-    6: "Specialization & Benefits",
-    7: "Market Trends & Growth",
-    8: "Personal Fit & Support",
-    9: "Modern Marketing & Tech",
-    10: "Niches & Pricing",
-    11: "Operations & Systems",
-    12: "Motivation & Networking",
-    13: "Client Relationships",
-    14: "Expertise & Storytelling",
-    15: "Advanced Operations",
-    16: "Legal & Compliance",
-    17: "Communication & Branding",
-    18: "Growth & Development",
-    19: "Long-term Success",
-    20: "Future & Innovation"
+export const getQABySlug = async (clusterNumber: number, slug: string): Promise<QAItem | null> => {
+  const { data, error } = await supabase
+    .from('qa_items')
+    .select('*')
+    .eq('cluster_number', clusterNumber)
+    .eq('slug', slug)
+    .single();
+  
+  if (error || !data) return null;
+  
+  return {
+    cluster: data.cluster_number,
+    funnel_stage: data.funnel_stage as "TOFU" | "MOFU" | "BOFU",
+    order_in_cluster: data.order_in_cluster,
+    question: data.question,
+    answer: data.answer,
+    cta_label: data.cta_label,
+    cta_url: data.cta_url,
+    slug: data.slug,
   };
-  return themes[clusterNumber] || `Cluster ${clusterNumber}`;
+};
+
+export const getAllClusters = async (): Promise<number[]> => {
+  const { data, error } = await supabase
+    .from('qa_clusters')
+    .select('cluster_number')
+    .order('cluster_number');
+  
+  if (error) throw error;
+  
+  return (data || []).map(c => c.cluster_number);
 };
 
 export const getFunnelStageColor = (stage: string): string => {
@@ -76,16 +108,4 @@ export const getFunnelStageColor = (stage: string): string => {
     case 'BOFU': return 'bg-purple-100 text-purple-800 border-purple-200';
     default: return 'bg-gray-100 text-gray-800 border-gray-200';
   }
-};
-
-export const getPrevNextInCluster = (clusterNumber: number, currentSlug: string) => {
-  const clusterItems = getQAByCluster(clusterNumber);
-  const currentIndex = clusterItems.findIndex(item => item.slug === currentSlug);
-  
-  if (currentIndex === -1) return { prev: null, next: null };
-  
-  return {
-    prev: currentIndex > 0 ? clusterItems[currentIndex - 1] : null,
-    next: currentIndex < clusterItems.length - 1 ? clusterItems[currentIndex + 1] : null
-  };
 };
