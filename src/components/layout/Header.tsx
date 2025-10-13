@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Calendar } from "lucide-react";
+import { Menu, X, Phone, Calendar, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Header = () => {
@@ -59,6 +59,12 @@ const Header = () => {
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-4">
+              <Button variant="ghost" size="sm" asChild>
+                <Link to="/admin/login">
+                  <Lock className="w-4 h-4 mr-2" />
+                  Admin
+                </Link>
+              </Button>
               <Button variant="outline" size="sm" asChild>
                 <Link to="/enroll">
                   <Calendar className="w-4 h-4 mr-2" />
@@ -98,6 +104,12 @@ const Header = () => {
                 </Link>
               ))}
               <div className="flex flex-col space-y-2 pt-4">
+                <Button variant="ghost" size="sm" asChild>
+                  <Link to="/admin/login" onClick={() => setIsMenuOpen(false)}>
+                    <Lock className="w-4 h-4 mr-2" />
+                    Admin
+                  </Link>
+                </Button>
                 <Button variant="outline" size="sm" asChild>
                   <Link to="/enroll" onClick={() => setIsMenuOpen(false)}>
                     <Calendar className="w-4 h-4 mr-2" />

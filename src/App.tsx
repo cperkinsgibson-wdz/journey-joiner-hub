@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Layout from "@/components/layout/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -19,6 +20,8 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import IncomeDisclosure from "./pages/IncomeDisclosure";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/admin/Login";
+import AdminDashboard from "./pages/admin/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -27,32 +30,39 @@ import Analytics from "@/components/seo/Analytics";
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Analytics />
-          <Layout>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Analytics />
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/team/catina-perkins" element={<Team />} />
-              <Route path="/qa" element={<QAIndex />} />
-              <Route path="/qa/cluster/:clusterNumber" element={<QACluster />} />
-              <Route path="/qa/cluster/:clusterNumber/:slug" element={<QADetail />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/enroll" element={<Enroll />} />
-              <Route path="/workshop" element={<Workshop />} />
-              <Route path="/thank-you" element={<ThankYou />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/income-disclosure" element={<IncomeDisclosure />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
+              {/* Admin routes (no layout) */}
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              
+              {/* Public routes (with layout) */}
+              <Route element={<Layout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/team/catina-perkins" element={<Team />} />
+                <Route path="/qa" element={<QAIndex />} />
+                <Route path="/qa/cluster/:clusterNumber" element={<QACluster />} />
+                <Route path="/qa/cluster/:clusterNumber/:slug" element={<QADetail />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/enroll" element={<Enroll />} />
+                <Route path="/workshop" element={<Workshop />} />
+                <Route path="/thank-you" element={<ThankYou />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/income-disclosure" element={<IncomeDisclosure />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Route>
             </Routes>
-          </Layout>
-        </BrowserRouter>
-      </TooltipProvider>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
     </HelmetProvider>
   </QueryClientProvider>
 );
