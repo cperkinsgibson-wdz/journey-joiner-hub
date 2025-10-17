@@ -27,6 +27,7 @@ import CategoryManager from "./pages/admin/CategoryManager";
 import QAClusterManager from "./pages/admin/QAClusterManager";
 import QAItemManager from "./pages/admin/QAItemManager";
 import { Navigate } from "react-router-dom";
+import ProtectedRoute from "@/components/auth/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -45,11 +46,11 @@ const App = () => (
               {/* Admin routes (no layout) */}
               <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
               <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/faqs" element={<FAQManager />} />
-            <Route path="/admin/categories" element={<CategoryManager />} />
-            <Route path="/admin/qa-clusters" element={<QAClusterManager />} />
-            <Route path="/admin/qa-items" element={<QAItemManager />} />
+              <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+              <Route path="/admin/faqs" element={<ProtectedRoute><FAQManager /></ProtectedRoute>} />
+              <Route path="/admin/categories" element={<ProtectedRoute><CategoryManager /></ProtectedRoute>} />
+              <Route path="/admin/qa-clusters" element={<ProtectedRoute><QAClusterManager /></ProtectedRoute>} />
+              <Route path="/admin/qa-items" element={<ProtectedRoute><QAItemManager /></ProtectedRoute>} />
               
               {/* Public routes (with layout) */}
               <Route element={<Layout />}>

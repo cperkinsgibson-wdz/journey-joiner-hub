@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
+import { categorySchema } from '@/lib/validations/admin';
 
 type Category = {
   id: string;
@@ -100,10 +101,20 @@ const CategoryManager = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (editingId) {
-      updateMutation.mutate({ id: editingId, data: formData });
-    } else {
-      createMutation.mutate(formData);
+    
+    try {
+      const validatedData = categorySchema.parse(formData) as typeof formData;
+      if (editingId) {
+        updateMutation.mutate({ id: editingId, data: validatedData });
+      } else {
+        createMutation.mutate(validatedData);
+      }
+    } catch (error: any) {
+      toast({
+        title: 'Validation error',
+        description: error.errors?.[0]?.message || 'Invalid input',
+        variant: 'destructive'
+      });
     }
   };
 

@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { Lock, Mail, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { loginSchema } from '@/lib/validations/admin';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -22,73 +23,63 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!email || !password) {
+    try {
+      const validatedData = loginSchema.parse({ email, password });
+      const { error } = await signIn(validatedData.email, validatedData.password);
+
+      if (error) {
+        toast({
+          title: 'Sign in failed',
+          description: error.message,
+          variant: 'destructive'
+        });
+      } else {
+        toast({
+          title: 'Welcome back!',
+          description: 'You have successfully signed in.',
+        });
+        navigate('/admin/dashboard');
+      }
+    } catch (error: any) {
       toast({
-        title: 'Missing fields',
-        description: 'Please enter both email and password',
+        title: 'Validation error',
+        description: error.errors?.[0]?.message || 'Invalid input',
         variant: 'destructive'
       });
+    } finally {
       setIsLoading(false);
-      return;
     }
-
-    const { error } = await signIn(email, password);
-
-    if (error) {
-      toast({
-        title: 'Sign in failed',
-        description: error.message,
-        variant: 'destructive'
-      });
-    } else {
-      toast({
-        title: 'Welcome back!',
-        description: 'You have successfully signed in.',
-      });
-      navigate('/admin/dashboard');
-    }
-    setIsLoading(false);
   };
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!email || !password) {
+    try {
+      const validatedData = loginSchema.parse({ email, password });
+      const { error } = await signUp(validatedData.email, validatedData.password);
+
+      if (error) {
+        toast({
+          title: 'Sign up failed',
+          description: error.message,
+          variant: 'destructive'
+        });
+      } else {
+        toast({
+          title: 'Account created!',
+          description: 'Please check your email to confirm your account.',
+        });
+      }
+    } catch (error: any) {
       toast({
-        title: 'Missing fields',
-        description: 'Please enter both email and password',
+        title: 'Validation error',
+        description: error.errors?.[0]?.message || 'Invalid input',
         variant: 'destructive'
       });
+    } finally {
       setIsLoading(false);
-      return;
     }
-
-    if (password.length < 6) {
-      toast({
-        title: 'Weak password',
-        description: 'Password must be at least 6 characters',
-        variant: 'destructive'
-      });
-      setIsLoading(false);
-      return;
-    }
-
-    const { error } = await signUp(email, password);
-
-    if (error) {
-      toast({
-        title: 'Sign up failed',
-        description: error.message,
-        variant: 'destructive'
-      });
-    } else {
-      toast({
-        title: 'Account created!',
-        description: 'Please check your email to confirm your account.',
-      });
-    }
-    setIsLoading(false);
   };
 
   return (
