@@ -69,12 +69,14 @@ export default {
         'gradient-ocean': 'var(--gradient-ocean)',
         'gradient-success': 'var(--gradient-success)',
         'gradient-subtle': 'var(--gradient-subtle)',
+        'gradient-cta': 'var(--gradient-cta)',
       },
       boxShadow: {
         'soft': 'var(--shadow-soft)',
         'medium': 'var(--shadow-medium)',
         'strong': 'var(--shadow-strong)',
         'glow': 'var(--shadow-glow)',
+        'float': 'var(--shadow-float)',
       },
       transitionTimingFunction: {
         'smooth': 'var(--transition-smooth)',

@@ -6,58 +6,60 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors */
-    --background: 210 20% 98%;
-    --foreground: 215 25% 15%;
+    /* Core Brand Colors - Soft Gray Background */
+    --background: 210 17% 95%;
+    --foreground: 285 44% 20%;
 
-    /* Trust & Professional Navy */
-    --primary: 215 85% 25%;
-    --primary-foreground: 210 40% 98%;
-    --primary-light: 215 85% 35%;
-    --primary-dark: 215 85% 15%;
+    /* Primary: Teal #008080 - Trust & Growth */
+    --primary: 180 100% 25%;
+    --primary-foreground: 210 17% 95%;
+    --primary-light: 180 100% 35%;
+    --primary-dark: 180 100% 18%;
 
-    /* Opportunity Gold */
-    --secondary: 45 95% 58%;
-    --secondary-foreground: 45 10% 15%;
-    --secondary-light: 45 95% 68%;
-    --secondary-dark: 45 95% 48%;
+    /* Secondary: Burnt Orange #D35400 - Action & Energy */
+    --secondary: 27 100% 42%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 27 100% 52%;
+    --secondary-dark: 27 100% 32%;
 
-    /* Adventure Teal */
-    --accent: 185 85% 45%;
-    --accent-foreground: 185 10% 15%;
-    --accent-light: 185 85% 55%;
-    --accent-dark: 185 85% 35%;
+    /* Accent: Deep Purple #6C3483 - Luxury & Authority */
+    --accent: 285 44% 36%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 285 44% 46%;
+    --accent-dark: 285 44% 26%;
 
     /* Supporting Colors */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 210 17% 98%;
+    --muted-foreground: 285 20% 45%;
     
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card-foreground: 285 44% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    --popover-foreground: 285 44% 20%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214 31% 91%;
-    --input: 214 31% 91%;
-    --ring: 215 85% 25%;
+    --border: 210 17% 88%;
+    --input: 210 17% 88%;
+    --ring: 180 100% 25%;
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(215 85% 25%), hsl(185 85% 45%));
-    --gradient-ocean: linear-gradient(180deg, hsl(185 85% 55%), hsl(215 85% 35%));
-    --gradient-success: linear-gradient(135deg, hsl(45 95% 58%), hsl(185 85% 45%));
-    --gradient-subtle: linear-gradient(135deg, hsl(210 20% 98%), hsl(210 40% 96%));
+    --gradient-hero: linear-gradient(135deg, hsl(180 100% 25%), hsl(285 44% 36%));
+    --gradient-ocean: linear-gradient(180deg, hsl(180 100% 35%), hsl(285 44% 26%));
+    --gradient-success: linear-gradient(135deg, hsl(27 100% 42%), hsl(180 100% 25%));
+    --gradient-subtle: linear-gradient(135deg, hsl(210 17% 95%), hsl(210 17% 98%));
+    --gradient-cta: linear-gradient(135deg, hsl(27 100% 42%), hsl(27 100% 52%));
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(215 85% 25% / 0.1);
-    --shadow-medium: 0 8px 30px -8px hsl(215 85% 25% / 0.15);
-    --shadow-strong: 0 12px 40px -12px hsl(215 85% 25% / 0.2);
-    --shadow-glow: 0 0 40px hsl(45 95% 58% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(180 100% 25% / 0.1);
+    --shadow-medium: 0 8px 30px -8px hsl(180 100% 25% / 0.15);
+    --shadow-strong: 0 12px 40px -12px hsl(180 100% 25% / 0.2);
+    --shadow-glow: 0 0 40px hsl(27 100% 42% / 0.4);
+    --shadow-float: 0 10px 40px -10px hsl(27 100% 42% / 0.5);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -74,32 +76,32 @@
   }
 
   .dark {
-    --background: 215 25% 15%;
-    --foreground: 210 40% 98%;
+    --background: 285 44% 10%;
+    --foreground: 210 17% 95%;
 
-    --card: 215 25% 15%;
-    --card-foreground: 210 40% 98%;
+    --card: 285 44% 15%;
+    --card-foreground: 210 17% 95%;
 
-    --popover: 215 25% 15%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 285 44% 15%;
+    --popover-foreground: 210 17% 95%;
 
-    --primary: 185 85% 55%;
-    --primary-foreground: 215 25% 15%;
-    --primary-light: 185 85% 65%;
-    --primary-dark: 185 85% 45%;
+    --primary: 180 100% 35%;
+    --primary-foreground: 285 44% 10%;
+    --primary-light: 180 100% 45%;
+    --primary-dark: 180 100% 25%;
 
-    --secondary: 45 95% 68%;
-    --secondary-foreground: 45 10% 15%;
-    --secondary-light: 45 95% 78%;
-    --secondary-dark: 45 95% 58%;
+    --secondary: 27 100% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 27 100% 62%;
+    --secondary-dark: 27 100% 42%;
 
-    --accent: 215 85% 35%;
-    --accent-foreground: 210 40% 98%;
-    --accent-light: 215 85% 45%;
-    --accent-dark: 215 85% 25%;
+    --accent: 285 44% 46%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 285 44% 56%;
+    --accent-dark: 285 44% 36%;
 
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 285 30% 20%;
+    --muted-foreground: 210 17% 65%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;

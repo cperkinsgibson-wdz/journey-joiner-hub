@@ -14,6 +14,7 @@ interface SEOHeadProps {
   articleAuthor?: string;
   breadcrumbs?: Array<{ name: string; url: string }>;
   speakableSelectors?: string[];
+  faqSchema?: Array<{ question: string; answer: string }>;
 }
 
 const SEOHead = ({
@@ -29,7 +30,8 @@ const SEOHead = ({
   modifiedTime,
   articleAuthor,
   breadcrumbs,
-  speakableSelectors = ["h1", "h2", ".qa-answer"]
+  speakableSelectors = ["h1", "h2", ".qa-answer", ".tofu-content", ".mofu-content", ".bofu-content"],
+  faqSchema
 }: SEOHeadProps) => {
   const fullTitle = title.includes("ExploreEarnRepeat") ? title : `${title} | ExploreEarnRepeat`;
   const currentUrl = canonical || `https://www.exploreearnrepeat.com${window.location.pathname}`;
@@ -107,6 +109,33 @@ const SEOHead = ({
     }))
   } : null;
 
+  // FAQPage schema for AEO optimization
+  const faqPageSchema = faqSchema ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqSchema.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
+  // WebSite schema with site search for voice assistants
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ExploreEarnRepeat",
+    "url": "https://www.exploreearnrepeat.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.exploreearnrepeat.com/qa?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
@@ -182,6 +211,18 @@ const SEOHead = ({
           {JSON.stringify(breadcrumbSchema)}
         </script>
       )}
+      
+      {/* FAQPage Schema for AEO */}
+      {faqPageSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqPageSchema)}
+        </script>
+      )}
+      
+      {/* WebSite Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
       
       {/* Google Tag Manager */}
       <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
