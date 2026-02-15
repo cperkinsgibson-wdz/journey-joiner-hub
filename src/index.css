@@ -2,64 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Travel Business Funnel Design System - All colors MUST be HSL */
+/* Pathway Travel Advisors — exploreearnrepeat.com-inspired design system */
 
 @layer base {
   :root {
-    /* Core Brand Colors - Soft Gray Background */
-    --background: 210 17% 95%;
-    --foreground: 285 44% 20%;
+    /* Core: Deep Navy background for hero sections */
+    --background: 210 20% 96%;
+    --foreground: 215 50% 15%;
 
-    /* Primary: Teal #008080 - Trust & Growth */
-    --primary: 180 100% 25%;
-    --primary-foreground: 210 17% 95%;
-    --primary-light: 180 100% 35%;
-    --primary-dark: 180 100% 18%;
+    /* Primary: Deep Navy #1B2A4A */
+    --primary: 215 50% 20%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 215 50% 30%;
+    --primary-dark: 215 50% 12%;
 
-    /* Secondary: Burnt Orange #D35400 - Action & Energy */
-    --secondary: 27 100% 42%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 27 100% 52%;
-    --secondary-dark: 27 100% 32%;
+    /* Secondary: Gold/Amber #D4A012 — CTA highlight */
+    --secondary: 43 85% 45%;
+    --secondary-foreground: 215 50% 12%;
+    --secondary-light: 43 85% 55%;
+    --secondary-dark: 43 85% 35%;
 
-    /* Accent: Deep Purple #6C3483 - Luxury & Authority */
-    --accent: 285 44% 36%;
+    /* Accent: Teal #008080 — icons & trust */
+    --accent: 180 100% 30%;
     --accent-foreground: 0 0% 100%;
-    --accent-light: 285 44% 46%;
-    --accent-dark: 285 44% 26%;
+    --accent-light: 180 100% 40%;
+    --accent-dark: 180 100% 20%;
 
-    /* Supporting Colors */
-    --muted: 210 17% 98%;
-    --muted-foreground: 285 20% 45%;
-    
+    /* Supporting */
+    --muted: 210 20% 97%;
+    --muted-foreground: 215 20% 45%;
+
     --card: 0 0% 100%;
-    --card-foreground: 285 44% 20%;
+    --card-foreground: 215 50% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 285 44% 20%;
+    --popover-foreground: 215 50% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 17% 88%;
-    --input: 210 17% 88%;
-    --ring: 180 100% 25%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 180 100% 30%;
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(180 100% 25%), hsl(285 44% 36%));
-    --gradient-ocean: linear-gradient(180deg, hsl(180 100% 35%), hsl(285 44% 26%));
-    --gradient-success: linear-gradient(135deg, hsl(27 100% 42%), hsl(180 100% 25%));
-    --gradient-subtle: linear-gradient(135deg, hsl(210 17% 95%), hsl(210 17% 98%));
-    --gradient-cta: linear-gradient(135deg, hsl(27 100% 42%), hsl(27 100% 52%));
+    --gradient-hero: linear-gradient(135deg, hsl(215 50% 18%), hsl(200 60% 22%), hsl(180 80% 25%));
+    --gradient-ocean: linear-gradient(180deg, hsl(215 50% 18%), hsl(215 50% 12%));
+    --gradient-success: linear-gradient(135deg, hsl(180 100% 30%), hsl(160 70% 40%));
+    --gradient-subtle: linear-gradient(135deg, hsl(210 20% 96%), hsl(210 20% 98%));
+    --gradient-cta: linear-gradient(135deg, hsl(43 85% 45%), hsl(43 85% 55%));
+    --gradient-announcement: linear-gradient(90deg, hsl(180 80% 30%), hsl(160 60% 40%), hsl(80 60% 50%));
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(180 100% 25% / 0.1);
-    --shadow-medium: 0 8px 30px -8px hsl(180 100% 25% / 0.15);
-    --shadow-strong: 0 12px 40px -12px hsl(180 100% 25% / 0.2);
-    --shadow-glow: 0 0 40px hsl(27 100% 42% / 0.4);
-    --shadow-float: 0 10px 40px -10px hsl(27 100% 42% / 0.5);
+    --shadow-soft: 0 4px 20px -4px hsl(215 50% 20% / 0.08);
+    --shadow-medium: 0 8px 30px -8px hsl(215 50% 20% / 0.12);
+    --shadow-strong: 0 12px 40px -12px hsl(215 50% 20% / 0.18);
+    --shadow-glow: 0 0 40px hsl(43 85% 45% / 0.4);
+    --shadow-float: 0 10px 40px -10px hsl(43 85% 45% / 0.5);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -76,39 +77,39 @@
   }
 
   .dark {
-    --background: 285 44% 10%;
-    --foreground: 210 17% 95%;
+    --background: 215 50% 8%;
+    --foreground: 210 20% 96%;
 
-    --card: 285 44% 15%;
-    --card-foreground: 210 17% 95%;
+    --card: 215 50% 12%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 285 44% 15%;
-    --popover-foreground: 210 17% 95%;
+    --popover: 215 50% 12%;
+    --popover-foreground: 210 20% 96%;
 
-    --primary: 180 100% 35%;
-    --primary-foreground: 285 44% 10%;
-    --primary-light: 180 100% 45%;
-    --primary-dark: 180 100% 25%;
+    --primary: 215 50% 30%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 215 50% 40%;
+    --primary-dark: 215 50% 20%;
 
-    --secondary: 27 100% 52%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 27 100% 62%;
-    --secondary-dark: 27 100% 42%;
+    --secondary: 43 85% 55%;
+    --secondary-foreground: 215 50% 12%;
+    --secondary-light: 43 85% 65%;
+    --secondary-dark: 43 85% 45%;
 
-    --accent: 285 44% 46%;
+    --accent: 180 100% 40%;
     --accent-foreground: 0 0% 100%;
-    --accent-light: 285 44% 56%;
-    --accent-dark: 285 44% 36%;
+    --accent-light: 180 100% 50%;
+    --accent-dark: 180 100% 30%;
 
-    --muted: 285 30% 20%;
-    --muted-foreground: 210 17% 65%;
+    --muted: 215 30% 15%;
+    --muted-foreground: 210 20% 65%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 185 85% 55%;
+    --border: 215 32% 20%;
+    --input: 215 32% 20%;
+    --ring: 180 100% 40%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;

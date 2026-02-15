@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Menu, X, Phone, Calendar, Shield } from "lucide-react";
 import WorkshopModal from "@/components/workshop/WorkshopModal";
 
 const Header = () => {
@@ -11,57 +10,68 @@ const Header = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: "Workshop", href: "#hero" },
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "About", href: "#about" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Q&A Guide", href: "/qa" },
+    { name: "FAQ", href: "/faq" },
+    { name: "Enroll", href: "/enroll" },
   ];
 
-  const scrollTo = (hash: string) => {
-    setIsMenuOpen(false);
-    if (location.pathname !== "/") {
-      window.location.href = "/" + hash;
-      return;
-    }
-    const el = document.querySelector(hash);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  const isActive = (href: string) => location.pathname === href;
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b shadow-soft">
+      {/* Announcement Bar */}
+      <div className="bg-gradient-announcement text-primary-foreground py-2 text-center text-sm font-medium">
+        <span>🎉 Use code <strong>WELLNESSZONE</strong> for the 3-Day Workshop</span>
+      </div>
+
+      <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b shadow-soft">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">P</span>
+              <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                <span className="text-accent-foreground font-bold text-lg">P</span>
               </div>
-              <span className="font-bold text-lg text-primary">Pathway Travel Advisors</span>
+              <span className="font-bold text-lg text-foreground">PathwayTravelAdvisors</span>
             </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
               {navigation.map((item) => (
-                <button
+                <Link
                   key={item.name}
-                  onClick={() => scrollTo(item.href)}
-                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                  to={item.href}
+                  className={`text-sm font-medium transition-colors hover:text-accent ${
+                    isActive(item.href)
+                      ? "text-foreground border-b-2 border-accent pb-1"
+                      : "text-muted-foreground"
+                  }`}
                 >
                   {item.name}
-                </button>
+                </Link>
               ))}
             </nav>
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-3">
+              <Link to="/admin/login" className="flex items-center space-x-1 text-sm text-muted-foreground hover:text-foreground">
+                <Shield className="w-4 h-4" />
+                <span>Admin</span>
+              </Link>
+              <Button variant="outline" size="sm" asChild>
+                <a href="sms:2028048709&body=WIN">
+                  <Calendar className="w-4 h-4 mr-1" />
+                  Book Call
+                </a>
+              </Button>
               <Button
                 size="sm"
-                className="bg-secondary text-secondary-foreground hover:bg-secondary-light font-semibold"
+                className="bg-primary text-primary-foreground hover:bg-primary-light font-semibold"
                 onClick={() => setModalOpen(true)}
               >
-                Get FREE Workshop
+                Save Your Seat
               </Button>
             </div>
 
@@ -77,24 +87,27 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t bg-background/95 backdrop-blur-sm">
+          <div className="md:hidden border-t bg-card/95 backdrop-blur-sm">
             <div className="container mx-auto px-4 py-4 space-y-3">
               {navigation.map((item) => (
-                <button
+                <Link
                   key={item.name}
-                  onClick={() => scrollTo(item.href)}
-                  className="block w-full text-left py-2 text-sm font-medium text-muted-foreground hover:text-primary"
+                  to={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`block w-full text-left py-2 text-sm font-medium ${
+                    isActive(item.href) ? "text-accent" : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {item.name}
-                </button>
+                </Link>
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
                 <Button
                   size="sm"
-                  className="bg-secondary text-secondary-foreground hover:bg-secondary-light font-semibold"
+                  className="bg-primary text-primary-foreground hover:bg-primary-light font-semibold"
                   onClick={() => { setIsMenuOpen(false); setModalOpen(true); }}
                 >
-                  Get FREE Workshop
+                  Save Your Seat
                 </Button>
                 <Button variant="outline" size="sm" asChild>
                   <a href="sms:2028048709&body=WIN">
@@ -109,14 +122,14 @@ const Header = () => {
       </header>
 
       {/* Mobile Sticky CTA */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-secondary p-3 shadow-float text-center">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-primary p-3 shadow-float text-center">
         <Button
-          className="w-full bg-primary text-primary-foreground hover:bg-primary-dark font-bold text-base h-12"
+          className="w-full bg-secondary text-secondary-foreground hover:bg-secondary-light font-bold text-base h-12"
           onClick={() => setModalOpen(true)}
         >
           Start the FREE Workshop
         </Button>
-        <p className="text-xs text-secondary-foreground/80 mt-1">
+        <p className="text-xs text-primary-foreground/80 mt-1">
           Use Sponsor ID: <strong>WELLNESSZONE</strong>
         </p>
       </div>
