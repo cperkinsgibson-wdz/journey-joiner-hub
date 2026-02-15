@@ -70,6 +70,7 @@ export default {
         'gradient-success': 'var(--gradient-success)',
         'gradient-subtle': 'var(--gradient-subtle)',
         'gradient-cta': 'var(--gradient-cta)',
+        'gradient-announcement': 'var(--gradient-announcement)',
       },
       boxShadow: {
         'soft': 'var(--shadow-soft)',
@@ -89,20 +90,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {

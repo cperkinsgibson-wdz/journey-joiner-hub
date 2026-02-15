@@ -21,7 +21,6 @@ const FloatingCTA = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isDismissed]);
 
-  // Hide on mobile (mobile has sticky bottom CTA in header)
   if (isDismissed) return null;
 
   return (
@@ -35,11 +34,11 @@ const FloatingCTA = () => {
         <div className="relative group">
           <Button
             size="lg"
-            className="bg-gradient-cta text-secondary-foreground shadow-float hover:shadow-glow transition-all duration-300 hover:scale-105 pr-12 rounded-full font-bold"
+            className="bg-secondary text-secondary-foreground shadow-float hover:shadow-glow transition-all duration-300 hover:scale-105 pr-12 rounded-full font-bold"
             onClick={() => setModalOpen(true)}
           >
             <ArrowRight className="w-5 h-5 mr-2" />
-            Get FREE Workshop
+            Save Your Seat
           </Button>
           <button
             onClick={() => setIsDismissed(true)}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,8 +11,8 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
-                <span className="text-secondary-foreground font-bold text-lg">P</span>
+              <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                <span className="text-accent-foreground font-bold text-lg">P</span>
               </div>
               <span className="font-bold text-xl">Pathway Travel Advisors</span>
             </div>
@@ -27,9 +27,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-secondary" />
-                <a href="tel:2028048709" className="text-sm text-primary-foreground/80 hover:text-secondary">
-                  202-804-8709
-                </a>
+                <a href="tel:2028048709" className="text-sm text-primary-foreground/80 hover:text-secondary">202-804-8709</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-secondary" />
@@ -49,8 +47,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/70">
+        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/60">
           <p>© {currentYear} Pathway Travel Advisors. Independent Representative. No income guarantees. Results vary. This site is for education and workshop access.</p>
         </div>
       </div>
