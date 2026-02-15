@@ -1,78 +1,67 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Calendar, Lock } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import WorkshopModal from "@/components/workshop/WorkshopModal";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Q&A Guide", href: "/qa" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Enroll", href: "/enroll" },
+    { name: "Workshop", href: "#hero" },
+    { name: "How It Works", href: "#how-it-works" },
+    { name: "About", href: "#about" },
+    { name: "FAQ", href: "#faq" },
+    { name: "Contact", href: "#contact" },
   ];
 
-  const isActive = (href: string) => location.pathname === href;
+  const scrollTo = (hash: string) => {
+    setIsMenuOpen(false);
+    if (location.pathname !== "/") {
+      window.location.href = "/" + hash;
+      return;
+    }
+    const el = document.querySelector(hash);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
-      {/* Promo Bar */}
-      <div className="bg-gradient-success text-center py-2 px-4">
-        <p className="text-sm font-medium text-secondary-foreground">
-          🎉 Use code <span className="font-bold">WELLNESSZONE</span> for the 3-Day Workshop
-        </p>
-      </div>
-
-      {/* Main Header */}
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b shadow-soft">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">E</span>
+                <span className="text-primary-foreground font-bold text-lg">P</span>
               </div>
-              <span className="font-bold text-xl text-primary">ExploreEarnRepeat</span>
+              <span className="font-bold text-lg text-primary">Pathway Travel Advisors</span>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-6">
               {navigation.map((item) => (
-                <Link
+                <button
                   key={item.name}
-                  to={item.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary",
-                    isActive(item.href)
-                      ? "text-primary border-b-2 border-primary"
-                      : "text-muted-foreground"
-                  )}
+                  onClick={() => scrollTo(item.href)}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
                 >
                   {item.name}
-                </Link>
+                </button>
               ))}
             </nav>
 
             {/* CTA Buttons */}
-            <div className="hidden md:flex items-center space-x-4">
-              <Button variant="ghost" size="sm" asChild>
-                <Link to="/admin/login">
-                  <Lock className="w-4 h-4 mr-2" />
-                  Admin
-                </Link>
-              </Button>
-              <Button variant="outline" size="sm" asChild>
-                <Link to="/enroll">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Book Call
-                </Link>
-              </Button>
-              <Button size="sm" asChild>
-                <Link to="/workshop">Save Your Seat</Link>
+            <div className="hidden md:flex items-center space-x-3">
+              <Button
+                size="sm"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary-light font-semibold"
+                onClick={() => setModalOpen(true)}
+              >
+                Get FREE Workshop
               </Button>
             </div>
 
@@ -89,43 +78,47 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden border-t bg-background/95 backdrop-blur-sm">
-            <div className="container mx-auto px-4 py-4 space-y-4">
+            <div className="container mx-auto px-4 py-4 space-y-3">
               {navigation.map((item) => (
-                <Link
+                <button
                   key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={cn(
-                    "block py-2 text-sm font-medium transition-colors hover:text-primary",
-                    isActive(item.href) ? "text-primary" : "text-muted-foreground"
-                  )}
+                  onClick={() => scrollTo(item.href)}
+                  className="block w-full text-left py-2 text-sm font-medium text-muted-foreground hover:text-primary"
                 >
                   {item.name}
-                </Link>
+                </button>
               ))}
-              <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to="/admin/login" onClick={() => setIsMenuOpen(false)}>
-                    <Lock className="w-4 h-4 mr-2" />
-                    Admin
-                  </Link>
+              <div className="flex flex-col space-y-2 pt-4 border-t border-border">
+                <Button
+                  size="sm"
+                  className="bg-secondary text-secondary-foreground hover:bg-secondary-light font-semibold"
+                  onClick={() => { setIsMenuOpen(false); setModalOpen(true); }}
+                >
+                  Get FREE Workshop
                 </Button>
                 <Button variant="outline" size="sm" asChild>
-                  <Link to="/enroll" onClick={() => setIsMenuOpen(false)}>
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Book Clarity Call
-                  </Link>
-                </Button>
-                <Button size="sm" asChild>
-                  <Link to="/workshop" onClick={() => setIsMenuOpen(false)}>
-                    Save Your Seat
-                  </Link>
+                  <a href="sms:2028048709&body=WIN">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Text WIN: 202-804-8709
+                  </a>
                 </Button>
               </div>
             </div>
           </div>
         )}
       </header>
+
+      {/* Mobile Sticky CTA */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-secondary p-3 shadow-float">
+        <Button
+          className="w-full bg-primary text-primary-foreground hover:bg-primary-dark font-bold text-base h-12"
+          onClick={() => setModalOpen(true)}
+        >
+          Get the FREE 3-Day Workshop
+        </Button>
+      </div>
+
+      <WorkshopModal open={modalOpen} onOpenChange={setModalOpen} />
     </>
   );
 };

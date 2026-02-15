@@ -33,16 +33,16 @@ const SEOHead = ({
   speakableSelectors = ["h1", "h2", ".qa-answer", ".tofu-content", ".mofu-content", ".bofu-content"],
   faqSchema
 }: SEOHeadProps) => {
-  const fullTitle = title.includes("ExploreEarnRepeat") ? title : `${title} | ExploreEarnRepeat`;
-  const currentUrl = canonical || `https://www.exploreearnrepeat.com${window.location.pathname}`;
+  const fullTitle = title.includes("Pathway Travel Advisors") ? title : `${title} | Pathway Travel Advisors`;
+  const currentUrl = canonical || `https://www.pathwaytraveladvisors.com${window.location.pathname}`;
   
   // Enhanced organization schema for E-E-A-T
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "ExploreEarnRepeat",
-    "alternateName": "Platinum Network Team",
-    "url": "https://www.exploreearnrepeat.com",
+    "name": "Pathway Travel Advisors",
+    "alternateName": "Pathway Travel Advisors",
+    "url": "https://www.pathwaytraveladvisors.com",
     "logo": "https://www.exploreearnrepeat.com/logo.png",
     "foundingDate": "2018",
     "founder": {
@@ -127,8 +127,8 @@ const SEOHead = ({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "ExploreEarnRepeat",
-    "url": "https://www.exploreearnrepeat.com",
+    "name": "Pathway Travel Advisors",
+    "url": "https://www.pathwaytraveladvisors.com",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://www.exploreearnrepeat.com/qa?search={search_term_string}",
@@ -156,7 +156,7 @@ const SEOHead = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={currentUrl} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="ExploreEarnRepeat" />
+      <meta property="og:site_name" content="Pathway Travel Advisors" />
       <meta property="og:locale" content="en_US" />
       
       {/* Twitter Cards */}
