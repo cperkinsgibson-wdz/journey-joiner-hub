@@ -109,13 +109,16 @@ const Header = () => {
       </header>
 
       {/* Mobile Sticky CTA */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-secondary p-3 shadow-float">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-secondary p-3 shadow-float text-center">
         <Button
           className="w-full bg-primary text-primary-foreground hover:bg-primary-dark font-bold text-base h-12"
           onClick={() => setModalOpen(true)}
         >
-          Get the FREE 3-Day Workshop
+          Start the FREE Workshop
         </Button>
+        <p className="text-xs text-secondary-foreground/80 mt-1">
+          Use Sponsor ID: <strong>WELLNESSZONE</strong>
+        </p>
       </div>
 
       <WorkshopModal open={modalOpen} onOpenChange={setModalOpen} />
