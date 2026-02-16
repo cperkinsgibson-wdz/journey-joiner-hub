@@ -8,9 +8,8 @@ import {
   ChevronUp, 
   HelpCircle, 
   Calendar, 
-  DollarSign,
-  Clock,
   Users,
+  Clock,
   Shield
 } from "lucide-react";
 import SEOHead from "@/components/seo/SEOHead";
@@ -34,63 +33,53 @@ const FAQ = () => {
 
   const faqData: FAQItem[] = [
     {
-      question: "What exactly is a home-based travel agency?",
-      answer: "A home-based travel agency allows you to operate as an independent travel agent from your home. You'll be affiliated with PlanNet Marketing and have access to the same booking platforms and commission structures as traditional travel agencies, but with the flexibility to work from anywhere.",
-      category: "Business Model"
+      question: "What is the difference between PlanNet Marketing and InteleTravel?",
+      answer: "PlanNet Marketing and InteleTravel are two separate companies that work in partnership. InteleTravel is a host travel agency and one of the originators of the home-based travel business model, with over 30 years in the travel industry. PlanNet Marketing, established in 2015, is a marketing company that introduces individuals to the opportunity to become Independent Travel Advisors through InteleTravel and also offers a separate business opportunity for those who choose to build a team.",
+      category: "Company Structure"
     },
     {
-      question: "Do I need experience in travel or sales to get started?",
-      answer: "No prior experience is required! Our Platinum Network Team provides comprehensive training covering everything from travel industry basics to advanced sales techniques. Many of our most successful agents started with zero experience.",
+      question: "What does InteleTravel provide?",
+      answer: "InteleTravel operates as a host travel agency. Independent Travel Advisors (ITAs) affiliated through InteleTravel can access booking platforms, supplier relationships, training, and support to operate a home-based travel business.",
+      category: "Company Structure"
+    },
+    {
+      question: "What does PlanNet Marketing provide?",
+      answer: "PlanNet Marketing provides a business opportunity where independent representatives can earn compensation by promoting travel services and, if they choose, building a team. Compensation is based on activity and performance. Results vary and income is not guaranteed.",
+      category: "Company Structure"
+    },
+    {
+      question: "Are PlanNet Marketing and InteleTravel the same company?",
+      answer: "No. They are separate companies. InteleTravel is a host agency in the travel industry. PlanNet Marketing is a marketing company that partners with InteleTravel to introduce individuals to the home-based travel advisor opportunity.",
+      category: "Company Structure"
+    },
+    {
+      question: "Do I join one company or both?",
+      answer: "Individuals who want to operate as Independent Travel Advisors affiliate through InteleTravel. Those who want to participate in the marketing and team-building side may also choose to become representatives with PlanNet Marketing. Each operates under its own structure and guidelines.",
       category: "Getting Started"
     },
     {
-      question: "How much can I realistically earn?",
-      answer: "Earnings vary based on effort, skill, and consistency. Our agents earn through travel commissions, override commissions from their team, and various bonuses and incentives. Individual results differ — see our Income Disclosure for details.",
-      category: "Earnings"
-    },
-    {
-      question: "What are the startup costs and ongoing fees?",
-      answer: "The initial investment is $199.95 to join PlanNet Marketing, plus monthly fees for your back-office system and website. This includes access to booking platforms, training materials, and ongoing support. Contact us for current pricing details.",
-      category: "Costs"
-    },
-    {
-      question: "How much time do I need to dedicate to be successful?",
-      answer: "Success depends on your goals and effort level. Part-time agents (10-15 hours/week) can earn meaningful supplemental income, while those treating it as a full-time business (25+ hours/week) typically see the highest returns. The beauty is you set your own schedule.",
-      category: "Time Commitment"
-    },
-    {
-      question: "What kind of training and support do you provide?",
-      answer: "The Platinum Network Team offers comprehensive training including: weekly team calls, one-on-one mentoring, industry certification programs, marketing materials, and access to our private Facebook group with 500+ successful agents sharing strategies and support.",
-      category: "Support"
-    },
-    {
-      question: "Is this a multi-level marketing (MLM) opportunity?",
-      answer: "Yes, PlanNet Marketing operates as a network marketing company. However, you can be successful selling travel alone. The team-building aspect provides additional income opportunities through override commissions, but it's not required for success.",
+      question: "What is a home-based travel business model?",
+      answer: "A home-based travel business model allows Independent Travel Advisors to operate remotely, helping clients book travel experiences while working under a host agency structure. InteleTravel has been a pioneer in this model for over three decades.",
       category: "Business Model"
     },
     {
-      question: "Can I book my own travel and earn commissions?",
-      answer: "Absolutely! One of the great benefits is earning commissions on your own travel. You'll have access to wholesale rates and can earn commissions on personal bookings, making your own vacations more affordable while building your business.",
-      category: "Benefits"
+      question: "Is income guaranteed with either company?",
+      answer: "No. Income is not guaranteed. Earnings depend on individual effort, consistency, skills developed, and market conditions. Results vary.",
+      category: "Earnings"
     },
     {
-      question: "What makes the Platinum Network Team different from other teams?",
-      answer: "Our team has a proven track record with over 1,500 successful agents. We focus on personalized mentoring, compliance with all regulations, and building sustainable businesses rather than just quick wins.",
-      category: "Team"
+      question: "Can I build this business part-time?",
+      answer: "Yes. Many individuals choose to build part-time around their existing responsibilities. Like any business, progress depends on focused and consistent activity.",
+      category: "Time Commitment"
     },
     {
-      question: "Are there any legal or compliance issues I should know about?",
-      answer: "We operate in full compliance with FTC guidelines and all state regulations. As part of PlanNet Marketing, you'll be a legitimate travel agent with proper licensing and insurance. We provide ongoing compliance training to ensure all activities meet legal requirements.",
-      category: "Legal"
+      question: "Do I have to build a team?",
+      answer: "No. Building a team is optional. Some individuals focus solely on operating as travel advisors. Others choose to participate in the marketing and leadership side through PlanNet Marketing.",
+      category: "Business Model"
     },
     {
-      question: "What happens if I decide this isn't for me?",
-      answer: "There's no long-term contract. While we're confident in our system and support, you can choose to discontinue at any time. We recommend giving it a fair try for at least 90 days to see real results, but the choice is always yours.",
-      category: "Commitment"
-    },
-    {
-      question: "How do I get started after my Clarity Call?",
-      answer: "After your call, if we both agree it's a good fit, you'll complete your enrollment with PlanNet Marketing, join our private team training group, and begin our comprehensive onboarding process. Results vary based on individual effort and commitment.",
+      question: "What is the next step if I want more details?",
+      answer: "The next step is a relaxed informational session where you can ask questions and understand how both companies operate. There is no obligation to move forward.",
       category: "Getting Started"
     }
   ];
@@ -100,6 +89,7 @@ const FAQ = () => {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "inLanguage": "en-US",
     "mainEntity": faqData.map(item => ({
       "@type": "Question",
       "name": item.question,
@@ -113,9 +103,9 @@ const FAQ = () => {
   return (
     <>
       <SEOHead
-        title="Frequently Asked Questions - Home-Based Travel Agency"
-        description="Get answers to common questions about starting a home-based travel agency with the Platinum Network Team. Learn about costs, earnings, training, and more."
-        keywords="travel agency FAQ, home-based travel business questions, platinum network team FAQ"
+        title="Frequently Asked Questions — PlanNet Marketing & InteleTravel"
+        description="Get answers to common questions about PlanNet Marketing, InteleTravel, and starting a home-based travel advisor business. No hype — just clarity."
+        keywords="PlanNet Marketing FAQ, InteleTravel FAQ, home-based travel advisor questions, travel business FAQ"
         schemaData={schemaData}
       />
 
@@ -128,12 +118,12 @@ const FAQ = () => {
               Frequently Asked Questions
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Get Answers to Your
-              <span className="text-primary block">Travel Business Questions</span>
+              Understand the Opportunity
+              <span className="text-primary block">Before You Decide</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We've compiled the most common questions about starting a home-based travel agency. 
-              Can't find what you're looking for? Book a clarity call for personalized answers.
+              Clear, compliant answers about PlanNet Marketing, InteleTravel, and the home-based travel advisor model. 
+              For full details, schedule a relaxed informational session.
             </p>
           </div>
 
@@ -190,23 +180,22 @@ const FAQ = () => {
               <Card className="bg-gradient-subtle border-none shadow-medium">
                 <CardContent className="py-12">
                   <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                    Still Have Questions?
+                    Want the Full Picture?
                   </h2>
                   <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                    Every situation is unique. Book a free clarity call to get personalized answers 
-                    and see if our travel business opportunity is right for you.
+                    For full details on structure, expectations, and how the partnership between PlanNet Marketing and InteleTravel works, schedule a relaxed informational session. No pressure. Just clarity.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button size="lg" asChild>
                       <Link to="/enroll">
                         <Calendar className="w-5 h-5 mr-2" />
-                        Book Free Clarity Call
+                        Schedule an Informational Session
                       </Link>
                     </Button>
                     <Button size="lg" variant="outline" asChild>
                       <Link to="/qa">
-                        Take Quick Assessment
+                        Browse the 100+ Q&A Hub
                       </Link>
                     </Button>
                   </div>
@@ -217,19 +206,19 @@ const FAQ = () => {
             {/* Quick Stats */}
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div className="space-y-2">
-                <DollarSign className="w-8 h-8 text-primary mx-auto" />
+                <Users className="w-8 h-8 text-primary mx-auto" />
                 <div className="text-2xl font-bold text-primary">1,500+</div>
-                <div className="text-sm text-muted-foreground">Successful Agents</div>
+                <div className="text-sm text-muted-foreground">Successful Mentors</div>
               </div>
               <div className="space-y-2">
-                <Users className="w-8 h-8 text-accent mx-auto" />
-                <div className="text-2xl font-bold text-accent">50+</div>
-                <div className="text-sm text-muted-foreground">Training Resources</div>
+                <Shield className="w-8 h-8 text-accent mx-auto" />
+                <div className="text-2xl font-bold text-accent">30+</div>
+                <div className="text-sm text-muted-foreground">Years (InteleTravel)</div>
               </div>
               <div className="space-y-2">
                 <Clock className="w-8 h-8 text-secondary mx-auto" />
-                <div className="text-2xl font-bold text-secondary">24/7</div>
-                <div className="text-sm text-muted-foreground">Team Support</div>
+                <div className="text-2xl font-bold text-secondary">50+</div>
+                <div className="text-sm text-muted-foreground">Training Resources</div>
               </div>
               <div className="space-y-2">
                 <Shield className="w-8 h-8 text-primary mx-auto" />
@@ -237,6 +226,11 @@ const FAQ = () => {
                 <div className="text-sm text-muted-foreground">Compliant</div>
               </div>
             </div>
+
+            {/* Compliance Footer */}
+            <p className="text-xs text-muted-foreground text-center mt-12">
+              Results vary. Earnings depend on individual effort, skill, and consistency. This content is for educational purposes only and does not guarantee income. Catina Perkins is an Independent Representative.
+            </p>
           </div>
         </div>
       </div>
