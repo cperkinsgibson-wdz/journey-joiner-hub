@@ -141,10 +141,27 @@ const QAIndex = () => {
     <>
       <SEOHead
         title="Travel Business Q&A Hub - 120 Expert Answers"
-        description="Find expert answers to 120 common questions about starting and growing your home-based travel agency. From TOFU basics to BOFU implementation strategies."
+        description="Find expert answers to 120 common questions about starting and growing your home-based travel agency. From basics to implementation to optimization."
         keywords="travel agent questions, home-based travel business FAQ, travel agency startup guide, PlanNet Marketing, travel business training"
         canonical="https://www.exploreearnrepeat.com/qa"
         schemaData={schemaData}
+        faqSchema={[
+          { question: "What is PlanNet Marketing?", answer: "PlanNet Marketing is a direct-selling business model connected to the travel industry. Independent representatives can earn compensation based on product/service sales and, if they choose, team-building activities. Results vary and depend on individual effort, skill, and market conditions." },
+          { question: "Is PlanNet Marketing a travel agency?", answer: "PlanNet Marketing is a marketing and distribution company that provides access to travel-related services and a business opportunity. Some participants also operate as independent travel advisors through associated platforms, depending on the program structure and requirements." },
+          { question: "Is income guaranteed with PlanNet Marketing?", answer: "No. Income is not guaranteed. Earnings depend on individual effort, consistency, skills developed over time, and external market factors." },
+          { question: "Can I build this business part-time?", answer: "Yes. Many people start part-time and build around work and family responsibilities. The key is consistent, focused activity over time." },
+          { question: "Do I need travel experience to get started?", answer: "No prior travel industry experience is required to begin. Training and mentorship may be available, and skills are developed through action and repetition." },
+          { question: "Do I need sales experience to succeed?", answer: "No. Many successful representatives begin without sales experience. Clear communication, follow-up habits, and coachability are more important than a sales background." },
+          { question: "Is this passive income?", answer: "It typically starts as active income because it requires consistent work. Over time, some people build leveraged income through systems and team development, but it still requires leadership and ongoing support." },
+          { question: "How long does it take to earn money?", answer: "There is no set timeline. Results vary based on effort, skill, time invested, and market conditions. It's best to approach it like a real business and focus on consistent progress." },
+          { question: "Do I have to recruit people?", answer: "Team-building is optional in many structures, but it can be part of creating leveraged growth. You can focus on customer-focused activity, and you can also choose to build a team if that aligns with your goals." },
+          { question: "Is PlanNet Marketing legitimate or a scam?", answer: "PlanNet Marketing is an established direct-selling model. A responsible way to evaluate legitimacy is to review official company materials, compensation disclosures, product/service value, and training support before making a decision." },
+          { question: "What does 'family-first' mean in business?", answer: "Family-first means building the business around your real life. It's about setting boundaries, choosing consistent time blocks, and growing at a pace that supports your responsibilities and wellbeing." },
+          { question: "What is duplication in network marketing?", answer: "Duplication is teaching simple, repeatable actions that others can follow. It focuses on clarity and consistency rather than complexity." },
+          { question: "What are common beginner mistakes to avoid?", answer: "Common mistakes include overcomplicating the process, relying on motivation instead of habits, and using hype-based messaging. A better approach is calm, consistent activity and a learn-as-you-go mindset." },
+          { question: "How do I stay compliant when promoting the business?", answer: "Avoid income guarantees, avoid implying typical results without official disclosures, and focus on education, process, and personal development. When discussing compensation, refer people to official PlanNet Marketing and partner materials." },
+          { question: "What is the next step if I want to learn more?", answer: "The next step is usually a relaxed, no-pressure conversation or overview where you can ask questions and decide if it fits your goals. There is no obligation to join." }
+        ]}
       />
 
       <div className="min-h-screen bg-gradient-subtle">
