@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
 import { categorySchema } from '@/lib/validations/admin';
+import { getSafeErrorMessage } from '@/lib/error-utils';
 
 type Category = {
   id: string;
@@ -49,7 +50,7 @@ const CategoryManager = () => {
       toast({ title: 'Category created successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to create category', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to create category', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -67,7 +68,7 @@ const CategoryManager = () => {
       toast({ title: 'Category updated successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to update category', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to update category', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -81,7 +82,7 @@ const CategoryManager = () => {
       toast({ title: 'Category deleted successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to delete category', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to delete category', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -122,7 +123,8 @@ const CategoryManager = () => {
     return name
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
+      .replace(/(^-|-$)/g, '')
+      .substring(0, 100);
   };
 
   if (isLoading) {

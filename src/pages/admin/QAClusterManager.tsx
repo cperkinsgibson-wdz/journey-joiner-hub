@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
 import { qaClusterSchema } from '@/lib/validations/admin';
+import { getSafeErrorMessage } from '@/lib/error-utils';
 
 type QACluster = {
   id: string;
@@ -49,7 +50,7 @@ const QAClusterManager = () => {
       toast({ title: 'Cluster created successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to create cluster', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to create cluster', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -67,7 +68,7 @@ const QAClusterManager = () => {
       toast({ title: 'Cluster updated successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to update cluster', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to update cluster', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -81,7 +82,7 @@ const QAClusterManager = () => {
       toast({ title: 'Cluster deleted successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to delete cluster', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to delete cluster', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 

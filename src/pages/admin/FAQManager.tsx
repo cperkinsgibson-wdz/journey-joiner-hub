@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { faqSchema } from '@/lib/validations/admin';
+import { getSafeErrorMessage } from '@/lib/error-utils';
 
 type FAQ = {
   id: string;
@@ -94,7 +95,7 @@ const FAQManager = () => {
       toast({ title: 'FAQ created successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to create FAQ', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to create FAQ', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -116,7 +117,7 @@ const FAQManager = () => {
       toast({ title: 'FAQ updated successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to update FAQ', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to update FAQ', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -130,7 +131,7 @@ const FAQManager = () => {
       toast({ title: 'FAQ deleted successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to delete FAQ', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to delete FAQ', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 

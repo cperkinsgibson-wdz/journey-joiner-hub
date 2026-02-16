@@ -21,9 +21,9 @@ export interface QACluster {
 export const createSlug = (question: string): string => {
   return question
     .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, '')
-    .replace(/\s+/g, '-')
-    .trim();
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+    .substring(0, 100);
 };
 
 export const getAllQAItems = async (): Promise<QAItem[]> => {

@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Lock, Mail, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { loginSchema } from '@/lib/validations/admin';
+import { getSafeErrorMessage } from '@/lib/error-utils';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -30,7 +31,7 @@ const Login = () => {
       if (error) {
         toast({
           title: 'Sign in failed',
-          description: error.message,
+          description: getSafeErrorMessage(error),
           variant: 'destructive'
         });
       } else {
@@ -62,7 +63,7 @@ const Login = () => {
       if (error) {
         toast({
           title: 'Sign up failed',
-          description: error.message,
+          description: getSafeErrorMessage(error),
           variant: 'destructive'
         });
       } else {
@@ -180,7 +181,7 @@ const Login = () => {
                       />
                     </div>
                     <p className="text-xs text-muted-foreground">
-                      Minimum 6 characters
+                      Minimum 8 characters with uppercase, lowercase, and number
                     </p>
                   </div>
                   <Button type="submit" className="w-full" disabled={isLoading}>
