@@ -1,9 +1,13 @@
-import { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user, loading } = useAuth();
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  requireRole?: 'admin' | 'editor';
+}
+
+const ProtectedRoute = ({ children, requireRole }: ProtectedRouteProps) => {
+  const { user, loading, isAdmin, isEditor } = useAuth();
   const location = useLocation();
 
   if (loading) {
@@ -16,6 +20,17 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
   if (!user) {
     return <Navigate to="/admin/login" state={{ from: location }} replace />;
+  }
+
+  if (requireRole) {
+    const hasRole =
+      requireRole === 'admin' ? isAdmin :
+      requireRole === 'editor' ? isEditor :
+      false;
+
+    if (!hasRole) {
+      return <Navigate to="/admin/dashboard" replace />;
+    }
   }
 
   return <>{children}</>;
