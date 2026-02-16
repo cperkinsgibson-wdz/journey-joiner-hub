@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit, Trash2, Save, X } from 'lucide-react';
 import { createSlug } from '@/utils/qa-utils';
 import { qaItemSchema } from '@/lib/validations/admin';
+import { getSafeErrorMessage } from '@/lib/error-utils';
 
 type QAItem = {
   id: string;
@@ -86,7 +87,7 @@ const QAItemManager = () => {
       toast({ title: 'QA item created successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to create QA item', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to create QA item', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -104,7 +105,7 @@ const QAItemManager = () => {
       toast({ title: 'QA item updated successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to update QA item', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to update QA item', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 
@@ -118,7 +119,7 @@ const QAItemManager = () => {
       toast({ title: 'QA item deleted successfully' });
     },
     onError: (error: any) => {
-      toast({ title: 'Failed to delete QA item', description: error.message, variant: 'destructive' });
+      toast({ title: 'Failed to delete QA item', description: getSafeErrorMessage(error), variant: 'destructive' });
     },
   });
 

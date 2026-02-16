@@ -29,11 +29,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setSession(session);
         setUser(session?.user ?? null);
         
-        // Defer role check to prevent deadlock
         if (session?.user) {
-          setTimeout(() => {
-            checkUserRole(session.user.id);
-          }, 0);
+          checkUserRole(session.user.id);
         } else {
           setIsAdmin(false);
           setIsEditor(false);
@@ -48,9 +45,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setLoading(false);
       
       if (session?.user) {
-        setTimeout(() => {
-          checkUserRole(session.user.id);
-        }, 0);
+        checkUserRole(session.user.id);
       }
     });
 
