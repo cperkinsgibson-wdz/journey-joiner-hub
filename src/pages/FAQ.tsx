@@ -45,12 +45,12 @@ const FAQ = () => {
     },
     {
       question: "How much can I realistically earn?",
-      answer: "Earnings vary based on effort and commitment. Our agents typically earn $500-$5,000+ per month, with top performers earning six figures annually. Income comes from travel commissions, override commissions from your team, and various bonuses and incentives.",
+      answer: "Earnings vary based on effort, skill, and consistency. Our agents earn through travel commissions, override commissions from their team, and various bonuses and incentives. Individual results differ — see our Income Disclosure for details.",
       category: "Earnings"
     },
     {
       question: "What are the startup costs and ongoing fees?",
-      answer: "The initial investment is $199.95 to join PlanNet Marketing, plus monthly fees of $99.95 for your back-office system and website. This includes access to booking platforms, training materials, and ongoing support. There are no hidden fees or additional charges.",
+      answer: "The initial investment is $199.95 to join PlanNet Marketing, plus monthly fees for your back-office system and website. This includes access to booking platforms, training materials, and ongoing support. Contact us for current pricing details.",
       category: "Costs"
     },
     {
@@ -75,7 +75,7 @@ const FAQ = () => {
     },
     {
       question: "What makes the Platinum Network Team different from other teams?",
-      answer: "Our team has a proven track record with over 500 successful agents and $2.5M+ in commissions paid. We focus on personalized mentoring, compliance with all regulations, and building sustainable businesses rather than just quick wins.",
+      answer: "Our team has a proven track record with over 1,500 successful agents. We focus on personalized mentoring, compliance with all regulations, and building sustainable businesses rather than just quick wins.",
       category: "Team"
     },
     {
@@ -218,13 +218,13 @@ const FAQ = () => {
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div className="space-y-2">
                 <DollarSign className="w-8 h-8 text-primary mx-auto" />
-                <div className="text-2xl font-bold text-primary">$2.5M+</div>
-                <div className="text-sm text-muted-foreground">Total Commissions</div>
+                <div className="text-2xl font-bold text-primary">1,500+</div>
+                <div className="text-sm text-muted-foreground">Successful Agents</div>
               </div>
               <div className="space-y-2">
                 <Users className="w-8 h-8 text-accent mx-auto" />
-                <div className="text-2xl font-bold text-accent">500+</div>
-                <div className="text-sm text-muted-foreground">Successful Agents</div>
+                <div className="text-2xl font-bold text-accent">50+</div>
+                <div className="text-sm text-muted-foreground">Training Resources</div>
               </div>
               <div className="space-y-2">
                 <Clock className="w-8 h-8 text-secondary mx-auto" />
