@@ -15,46 +15,46 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
-    title: "Can You Start a Travel Business Part-Time? A Family-First Reality Check",
-    slug: "part-time-travel-business",
-    excerpt: "What 'part-time business' actually looks like, time blocks that work for parents and caregivers, and skills you'll build along the way.",
+    title: "What Is the Difference Between PlanNet Marketing and InteleTravel?",
+    slug: "plannet-vs-inteletravel",
+    excerpt: "Clarify that they are separate companies — InteleTravel as a host agency, PlanNet Marketing as the marketing partner — and how they work together.",
     stage: "Basics",
-    primaryKeyword: "start a travel business part-time",
+    primaryKeyword: "PlanNet Marketing vs InteleTravel",
   },
   {
-    title: "Is PlanNet Marketing Legit? How to Evaluate Any Travel Business Opportunity",
-    slug: "is-plannet-marketing-legit",
-    excerpt: "What legitimacy looks like, questions to ask before joining anything, and how to stay safe and informed.",
+    title: "How Does a Home-Based Travel Advisor Business Actually Work?",
+    slug: "how-travel-advisor-works",
+    excerpt: "Understand the host agency model, independent travel advisor structure, supplier relationships, and the flexibility of working remotely.",
     stage: "Basics",
-    primaryKeyword: "is PlanNet Marketing legit",
+    primaryKeyword: "home-based travel advisor business",
   },
   {
-    title: "What Does 'Family-First Income Growth' Mean Without the Hype?",
-    slug: "family-first-income-growth",
-    excerpt: "Why 'family-first' is a strategy, not a slogan. Boundaries, schedule, sustainable growth, and what you actually control.",
+    title: "Can You Build a Travel Business Part-Time Without Sales Experience?",
+    slug: "part-time-no-experience",
+    excerpt: "A calm, honest look at skill-building over hype. Results vary — and that's okay. Learn what part-time commitment actually looks like.",
     stage: "Basics",
-    primaryKeyword: "family-first income",
+    primaryKeyword: "travel business part-time no experience",
   },
   {
-    title: "Your First 30 Days: A Calm Starter Plan for a Travel Business",
-    slug: "first-30-days-travel-business",
-    excerpt: "Week-by-week breakdown: setup, conversations, presentations, and review. No pressure, just progress.",
+    title: "Should You Become Just a Travel Advisor — or Also Build with PlanNet Marketing?",
+    slug: "advisor-vs-team-builder",
+    excerpt: "Explore the travel-only path versus the marketing and team-building path. No pressure — it depends on your personal goals.",
     stage: "Implementation",
-    primaryKeyword: "first 30 days travel business",
+    primaryKeyword: "travel advisor or PlanNet Marketing team builder",
   },
   {
-    title: "Do You Have to Recruit? Ethical Team Building vs. Pushy Selling",
-    slug: "ethical-team-building",
-    excerpt: "What team-building is and isn't, ethical language examples, and how to invite without pressure.",
+    title: "What to Expect in Your First 90 Days as a Home-Based Travel Advisor",
+    slug: "first-90-days",
+    excerpt: "Training rhythm, skill development, and consistency habits for new travel advisors. Clear disclaimer: results vary.",
     stage: "Implementation",
-    primaryKeyword: "do you have to recruit in network marketing",
+    primaryKeyword: "first 90 days travel advisor",
   },
   {
-    title: "What Happens on a 15-Minute Info Call? Here's the Exact Agenda",
-    slug: "15-minute-info-call",
-    excerpt: "Who the call is for, the exact agenda, what you'll cover, and what you won't do. No pressure, no income promises.",
+    title: "What Happens on a PlanNet Marketing & InteleTravel Overview Session?",
+    slug: "overview-session",
+    excerpt: "What the session covers: how InteleTravel operates, how PlanNet Marketing operates, which role fits you, and what to expect. No pressure.",
     stage: "Optimization",
-    primaryKeyword: "PlanNet Marketing info call",
+    primaryKeyword: "PlanNet Marketing overview session",
   },
 ];
 
@@ -71,9 +71,9 @@ const BlogIndex = () => {
   return (
     <>
       <SEOHead
-        title="Travel Business Blog - Learn Before You Leap"
-        description="Explore our blog for honest, compliance-friendly insights on starting a family-first travel business with PlanNet Marketing. No hype, just clarity."
-        keywords="travel business blog, PlanNet Marketing articles, family-first business, home-based travel agency"
+        title="Travel Business Blog — PlanNet Marketing & InteleTravel Explained"
+        description="Honest, compliance-friendly insights on starting a family-first travel business with PlanNet Marketing and InteleTravel. No hype — just clarity."
+        keywords="PlanNet Marketing blog, InteleTravel articles, travel advisor business, home-based travel agency"
         canonical="https://www.exploreearnrepeat.com/learn/blog"
       />
 
@@ -88,7 +88,7 @@ const BlogIndex = () => {
               Travel Business Blog
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Honest, compliance-friendly insights on building a family-first travel business. No hype — just clarity and next steps.
+              Honest, compliance-friendly insights on PlanNet Marketing, InteleTravel, and building a family-first travel business. No hype — just clarity and next steps.
             </p>
           </div>
 
@@ -125,13 +125,13 @@ const BlogIndex = () => {
                 <Link to="/qa">Browse the 100+ Q&A Hub</Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link to="/enroll">Schedule a 15-Minute Conversation</Link>
+                <Link to="/enroll">Schedule an Informational Session</Link>
               </Button>
             </div>
           </div>
 
           <p className="text-xs text-muted-foreground text-center mt-12">
-            Results vary. Earnings depend on individual effort, skill, and consistency. This content is for educational purposes only and does not guarantee income.
+            Results vary. Earnings depend on individual effort, skill, and consistency. This content is for educational purposes only and does not guarantee income. Catina Perkins is an Independent Representative.
           </p>
         </div>
       </div>
