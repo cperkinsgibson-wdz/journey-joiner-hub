@@ -20,6 +20,8 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import IncomeDisclosure from "./pages/IncomeDisclosure";
 import NotFound from "./pages/NotFound";
+import BlogIndex from "./pages/blog/BlogIndex";
+import BlogPost from "./pages/blog/BlogPost";
 import AdminLogin from "./pages/admin/Login";
 import AdminDashboard from "./pages/admin/Dashboard";
 import FAQManager from "./pages/admin/FAQManager";
@@ -67,6 +69,8 @@ const App = () => (
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/income-disclosure" element={<IncomeDisclosure />} />
+                <Route path="/learn/blog" element={<BlogIndex />} />
+                <Route path="/learn/blog/:slug" element={<BlogPost />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Route>
