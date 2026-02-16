@@ -103,13 +103,13 @@ const Enroll = () => {
                   <p>✅ Guided enrollment assistance</p>
                 </div>
                 <Button size="lg" variant="outline" className="w-full gap-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground" asChild>
-                  <a href="sms:2028048709&body=WIN">
+                  <a href="https://app.pathwaytraveladvisors.com/widget/bookings/travel-advisors" target="_blank" rel="noopener noreferrer">
                     Schedule Your Call
                     <Calendar className="w-5 h-5" />
                   </a>
                 </Button>
                 <p className="text-xs text-muted-foreground">
-                  Call or text WIN to 202-804-8709
+                  Book a time that works for you
                 </p>
               </CardContent>
             </Card>
