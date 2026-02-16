@@ -21,12 +21,12 @@ const About = () => {
   ];
 
   const testimonialVideos = [
-    { url: "https://vimeo.com/1106575112?fl=pl&fe=sh", title: "Success Story 1" },
-    { url: "https://vimeo.com/1106554369?fl=pl&fe=sh", title: "Success Story 2" },
-    { url: "https://vimeo.com/1106537270?fl=pl&fe=sh", title: "Success Story 3" },
-    { url: "https://vimeo.com/1106544755?fl=pl&fe=sh", title: "Success Story 4" },
-    { url: "https://vimeo.com/1106141843?fl=pl&fe=sh", title: "Success Story 5" },
-    { url: "https://vimeo.com/1106131184?fl=pl&fe=sh", title: "Success Story 6" },
+    { url: "https://vimeo.com/1106575112?fl=pl&fe=sh", title: "A Plant-Worker in the Automotive Industry" },
+    { url: "https://vimeo.com/1106554369?fl=pl&fe=sh", title: "Black-Sheep of the Family" },
+    { url: "https://vimeo.com/1106537270?fl=pl&fe=sh", title: "College Drop Out" },
+    { url: "https://vimeo.com/1106544755?fl=pl&fe=sh", title: "Joined the Army at 17" },
+    { url: "https://vimeo.com/1106141843?fl=pl&fe=sh", title: "Introvert, Teen Mother, Married/Divorced, Denied for Foodstamps" },
+    { url: "https://vimeo.com/1106131184?fl=pl&fe=sh", title: "Mother That Started the Business at Age 52" },
   ];
 
   const schemaData = {
