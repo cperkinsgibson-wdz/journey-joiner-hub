@@ -158,7 +158,7 @@ const QAIndex = () => {
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Get expert answers to {allItems.length} common questions about building your family-first, 
-              income-growth travel business. From basics (TOFU) to implementation (BOFU) to optimization (MOFU).
+              income-growth travel business. From basics to implementation to optimization.
             </p>
             
             {/* Search */}
