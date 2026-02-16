@@ -49,10 +49,10 @@ const App = () => (
               <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
-              <Route path="/admin/faqs" element={<ProtectedRoute><FAQManager /></ProtectedRoute>} />
-              <Route path="/admin/categories" element={<ProtectedRoute><CategoryManager /></ProtectedRoute>} />
-              <Route path="/admin/qa-clusters" element={<ProtectedRoute><QAClusterManager /></ProtectedRoute>} />
-              <Route path="/admin/qa-items" element={<ProtectedRoute><QAItemManager /></ProtectedRoute>} />
+              <Route path="/admin/faqs" element={<ProtectedRoute requireRole="editor"><FAQManager /></ProtectedRoute>} />
+              <Route path="/admin/categories" element={<ProtectedRoute requireRole="editor"><CategoryManager /></ProtectedRoute>} />
+              <Route path="/admin/qa-clusters" element={<ProtectedRoute requireRole="editor"><QAClusterManager /></ProtectedRoute>} />
+              <Route path="/admin/qa-items" element={<ProtectedRoute requireRole="editor"><QAItemManager /></ProtectedRoute>} />
               
               {/* Public routes (with layout) */}
               <Route element={<Layout />}>
