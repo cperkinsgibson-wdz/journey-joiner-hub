@@ -90,7 +90,7 @@ const FAQ = () => {
     },
     {
       question: "How do I get started after my Clarity Call?",
-      answer: "After your call, if we both agree it's a good fit, you'll complete your enrollment with PlanNet Marketing, join our private team training group, and begin our comprehensive onboarding process. You'll have your first booking within 30 days with our system.",
+      answer: "After your call, if we both agree it's a good fit, you'll complete your enrollment with PlanNet Marketing, join our private team training group, and begin our comprehensive onboarding process. Results vary based on individual effort and commitment.",
       category: "Getting Started"
     }
   ];
